@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Preencha guias SP/SADT com conferência de códigos TUSS, sem enviar documentos a um servidor.">
+  <title>Guia SADT • Preenchimento</title>
+  <style>
+    :root{--ink:#182733;--slate:#596b76;--teal:#136979;--teal-dark:#0b4653;--mint:#e9f7f5;--paper:#fff;--page:#f3f7f9;--line:#dae4e9;--warn:#81530e;--warm:#fff7e8;--red:#b63735;--danger:#fff1ee;--success:#11674c;--success-bg:#eaf8f0;--round:14px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--page);margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px}button,input,textarea,select{font:inherit}h1,h2,h3,p{margin-top:0}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}.container{max-width:1290px;margin:auto;padding:0 22px 52px}
+    header{background:linear-gradient(115deg,#0b4350,#116879);color:#fff;padding:38px 0 42px}header .container{padding-bottom:0}.eyebrow{font-size:11px;font-weight:750;letter-spacing:2px;text-transform:uppercase;color:#a4e5e4;margin-bottom:12px}header h1{font-size:clamp(26px,4.2vw,38px);line-height:1.17;letter-spacing:-.8px;margin:0 0 10px}header p{line-height:1.65;color:#dbf1f1;max-width:780px;margin:0}.privacy{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid #68a4ac;border-radius:40px;font-size:12px;font-weight:600;margin-top:21px}
+    main{margin-top:-20px}.panel{border:1px solid var(--line);background:var(--paper);box-shadow:0 9px 30px #193e5110;border-radius:var(--round);margin-bottom:16px;padding:25px 27px}.panel h2{font-size:18px;letter-spacing:-.25px;margin:0}.sect-head{display:flex;align-items:center;gap:11px;margin-bottom:18px}.number{display:grid;place-items:center;width:31px;height:31px;border-radius:10px;color:var(--teal-dark);background:var(--mint);font-weight:800;flex:none}.muted{color:var(--slate);line-height:1.55;font-size:13px}.lead{margin:0 0 16px}.uploads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.upload{display:flex;flex-direction:column;gap:10px;border:1px dashed #90b5c0;border-radius:12px;background:#fafdfd;padding:18px;min-width:0}.upload strong{font-size:14px}.upload .note{font-size:12px;color:var(--slate);line-height:1.4;min-height:30px}.upload input{width:100%;font-size:12px;max-width:100%}input[type=file]::file-selector-button{background:var(--mint);color:var(--teal-dark);border:1px solid #bcdcd9;padding:8px;border-radius:8px;margin-right:7px;font-weight:700}.actionbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:19px}.btn{border:1px solid #bdd4da;border-radius:9px;padding:11px 16px;background:white;color:var(--teal-dark);font-weight:700;transition:.12s;min-height:42px}.btn:hover:not(:disabled){filter:brightness(.96)}.btn-primary{border:1px solid var(--teal);background:var(--teal);color:white}.btn-subtle{background:var(--page)}.btn-danger{color:var(--red);border:1px solid #e7c4c1}.status{margin-top:14px;border-radius:10px;background:#f1f6f7;border:1px solid #d5e4e7;padding:12px 14px;line-height:1.55;white-space:pre-line}.status:empty{display:none}.status.warning{background:var(--warm);color:#6b4a17;border-color:#f2dfb9}.status.error{background:var(--danger);color:#842722;border-color:#f3cfc9}.status.success{background:var(--success-bg);color:var(--success);border-color:#bfe7d5}.progress{height:5px;border-radius:5px;background:#d5e7e9;overflow:hidden;margin-top:11px}.progress>i{display:block;background:var(--teal);height:100%;width:0%;transition:width .2s}.progress[hidden]{display:none}
+    .fields{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:15px}.field{min-width:0;display:flex;flex-direction:column;gap:6px;grid-column:span 3}.field.wide{grid-column:span 6}.field.half{grid-column:span 4}.field label{font-size:12px;color:#506774;font-weight:700}.field input{border:1px solid #cbd9df;background:white;border-radius:8px;padding:10px 11px;width:100%;height:41px;color:var(--ink);outline:none}.field input:focus,.table-area input:focus{border-color:#238da0;box-shadow:0 0 0 3px #e2f5f7}.field small{font-size:11px;color:var(--slate)}.field input[readonly]{background:#f1f6f8}.hint{font-size:12px;color:var(--slate);margin-top:14px;line-height:1.6}
+    .pill{border:1px solid #c8dde3;border-radius:100px;padding:5px 10px;font-size:12px;background:#f6fafb;color:#345b67;font-weight:700}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.table-area{overflow:auto;border:1px solid var(--line);border-radius:10px}.exam-table{border-collapse:collapse;width:100%;min-width:1050px;text-align:left}.exam-table thead{background:#eff5f7;position:sticky;top:0;z-index:1}.exam-table th{font-size:11px;color:#506773;text-transform:uppercase;letter-spacing:.35px;padding:12px 10px;white-space:nowrap}.exam-table td{padding:8px 7px;border-top:1px solid #e5ecef;vertical-align:middle}.exam-table td:first-child{padding-left:10px}.exam-table input{width:100%;min-width:0;border:1px solid #d5e0e4;border-radius:6px;padding:8px 7px;background:#fff;color:var(--ink);font-size:12px}.exam-table .qt{max-width:70px}.exam-table tr.pending{background:#fffcf7}.exam-table tr.valid{background:#fbfffd}.exam-table tr.err{background:#fff7f5}.code-field{min-width:110px}.desc-field{min-width:290px}.exam-field{min-width:180px}.state{font-size:11px;color:var(--slate);max-width:180px;line-height:1.4}.state.bad{color:var(--warn);font-weight:750}.state.good{color:var(--success)}.icon-btn{border:1px solid #ebd5d5;background:#fff;color:var(--red);border-radius:7px;font-size:18px;padding:4px 10px;line-height:1.1}
+    .card-name-row{display:flex;gap:8px;align-items:center}.card-name-row input{flex:1;min-width:0}.card-name-row .btn{white-space:nowrap;padding:9px 12px}.download{display:inline-flex;gap:10px;align-items:center;background:#e9f7ef;border:1px solid #b8e1c6;border-radius:10px;margin-top:16px;padding:13px 18px;font-weight:800;color:var(--success);text-decoration:none}.download[hidden]{display:none}
+    details{margin-top:20px;border-top:1px solid var(--line);padding-top:16px}summary{cursor:pointer;font-weight:700;color:var(--teal-dark)}.lookup{padding:10px 13px;border:1px solid #cbd9df;border-radius:8px;width:100%;margin:13px 0}.catalog-grid{display:grid;grid-template-columns:110px 1fr;gap:0;max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:8px}.catalog-grid div{padding:9px 11px;border-bottom:1px solid #ebeff1;font-size:12px}.catalog-grid .c-code{font-weight:800;color:var(--teal-dark);font-variant-numeric:tabular-nums}.footer{color:#657984;line-height:1.6;font-size:12px;text-align:center;padding:13px 22px 20px}.noprint{}
+    .tabs{display:flex;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:6px;margin-bottom:16px;box-shadow:0 9px 30px #193e5110;flex-wrap:wrap}.tab{flex:1;min-width:200px;border:0;background:transparent;border-radius:8px;padding:12px 14px;font-weight:750;color:var(--slate);text-align:left}.tab small{display:block;font-weight:500;font-size:12px;margin-top:2px}.tab[aria-selected=true]{background:var(--mint);color:var(--teal-dark)}.tab:hover:not([aria-selected=true]){background:#f4f8f9}
+    .aut-summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:16px}.aut-summary .field{grid-column:span 2}.aut-summary .field select{border:1px solid #cbd9df;background:white;border-radius:8px;padding:9px 10px;height:41px;width:100%;color:var(--ink);font-weight:700}.aut-total{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:linear-gradient(115deg,#0b4350,#116879);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:16px}.aut-total .lbl{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:#a4e5e4;font-weight:750}.aut-total .val{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.6px;font-variant-numeric:tabular-nums}.aut-total .meta{font-size:13px;color:#dbf1f1;line-height:1.6;text-align:right}
+    .aut-table{border-collapse:collapse;width:100%;min-width:900px;text-align:left}.aut-table thead{background:#eff5f7;position:sticky;top:0}.aut-table th{font-size:11px;color:#506773;text-transform:uppercase;letter-spacing:.35px;padding:11px 9px;white-space:nowrap}.aut-table td{padding:7px 8px;border-top:1px solid #e5ecef;vertical-align:middle;font-size:12.5px}.aut-table input,.aut-table select{border:1px solid #d5e0e4;border-radius:6px;padding:7px;font-size:12px;background:#fff;color:var(--ink)}.aut-table .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.aut-table tr.warn{background:#fffaf0}.aut-table tr.bad{background:#fff4f2}.aut-table tfoot td{font-weight:800;border-top:2px solid var(--line);font-size:14px;padding:12px 9px}.aut-table .ocr{display:block;color:var(--slate);font-size:11px;margin-top:2px}
+    .chk{display:flex;gap:8px;align-items:center;font-size:13px;color:#345b67;font-weight:600;margin:4px 0 14px}.guide-block+.guide-block{margin-top:26px;padding-top:22px;border-top:2px dashed var(--line)}.guide-title{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.guide-title h3{margin:0;font-size:16px}
+    @media(max-width:840px){.aut-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.aut-summary .field{grid-column:span 1}.aut-total .meta{text-align:left}}
+    @media print{header,.tabs,.noprint,#aba-guia,.footer,.actionbar,.icon-btn{display:none!important}body{background:#fff}.panel{box-shadow:none;border:0;padding:0}main{margin-top:0}.table-area{overflow:visible;border:0}.aut-table{min-width:0}.aut-total{background:#fff;color:#000;border:2px solid #000}.aut-total .lbl,.aut-total .meta{color:#000}}
+    @media(max-width:840px){.uploads{grid-template-columns:1fr}.fields{grid-template-columns:repeat(6,minmax(0,1fr))}.field,.field.wide{grid-column:span 3}.field.half{grid-column:span 3}.upload .note{min-height:auto}}
+    @media(max-width:560px){header{padding-top:27px}.container{padding-left:12px;padding-right:12px}.panel{padding:18px 15px}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.field,.field.wide,.field.half{grid-column:span 2}.sect-head{align-items:flex-start}.card-name-row{flex-direction:column;align-items:stretch}header h1{font-size:26px}}
+  </style>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <header><div class="container"><div class="eyebrow">Ferramenta para preenchimento de guias</div><h1>Guia SP/SADT, sem digitação repetitiva.</h1><p>Anexe o pedido médico, a carteirinha e a guia em branco. O sistema identifica os exames, associa os códigos TUSS, solicita conferência dos itens sem correspondência e gera o PDF no próprio navegador.</p><div class="privacy">◈ Processamento dos documentos no navegador • Sem envio para servidor</div></div></header>
+  <main class="container">
+    <nav class="tabs" role="tablist" aria-label="Funções">
+      <button class="tab" role="tab" id="tab-guia" aria-selected="true" aria-controls="aba-guia" type="button">Preencher guia<small>Pedido + carteirinha → guia SP/SADT</small></button>
+      <button class="tab" role="tab" id="tab-valor" aria-selected="false" aria-controls="aba-valor" type="button">Valor da guia autorizada<small>Convênio, códigos e soma pela tabela</small></button>
+    </nav>
+    <div id="aba-guia" role="tabpanel" aria-labelledby="tab-guia">
+    <section class="panel" aria-labelledby="h1"><div class="sect-head"><span class="number">1</span><h2 id="h1">Anexe os documentos</h2></div><p class="muted lead">PDFs com texto são lidos diretamente. Fotos e PDFs digitalizados usam OCR no navegador, com reconhecimento sujeito à conferência.</p>
+      <div class="uploads">
+        <label class="upload"><strong>Pedido médico</strong><span class="note">Lista de exames e identificação do profissional</span><input type="file" id="pedido" accept=".pdf,.png,.jpg,.jpeg,.webp,image/*,application/pdf"></label>
+        <label class="upload"><strong>Carteirinha do paciente</strong><span class="note">Número, validade e nome do beneficiário</span><input type="file" id="cartao" accept=".pdf,.png,.jpg,.jpeg,.webp,image/*,application/pdf"></label>
+        <label class="upload"><strong>Guia SP/SADT em branco</strong><span class="note">Modelo original A4 horizontal do Banco Central, em PDF</span><input type="file" id="guia" accept=".pdf,application/pdf"></label>
+      </div>
+      <div class="actionbar"><button class="btn btn-primary" id="analisar">Ler documentos e localizar códigos</button><button class="btn btn-subtle" id="limpar" type="button">Limpar formulário</button></div>
+      <div class="status" id="status-arquivos" role="status">Envie os três arquivos para iniciar.</div><div class="progress" id="progress" hidden><i id="progress-bar"></i></div>
+    </section>
+    <section class="panel" aria-labelledby="h2"><div class="sect-head"><span class="number">2</span><h2 id="h2">Confira os dados da guia</h2></div>
+      <div class="status success" id="modelo-detectado">Modelo da guia será identificado após anexar.</div>
+      <div class="fields">
+        <div class="field"><label for="carteira">Campo 8 · Número da carteira</label><input id="carteira" autocomplete="off"></div>
+        <div class="field"><label for="validade">Campo 9 · Validade</label><input id="validade" placeholder="DD/MM/AAAA" autocomplete="off"></div>
+        <div class="field wide"><label for="paciente">Campo 10 · Beneficiário</label><input id="paciente" autocomplete="off"></div>
+        <div class="field" id="plano-wrap" hidden><label for="plano">Campo 9 · Plano (CASEC)</label><input id="plano" autocomplete="off" placeholder="Ex.: PME - Plano Médico Estendido"></div>
+        <div class="field" id="cns-wrap" hidden><label for="cns">Cartão Nacional de Saúde (se houver)</label><input id="cns" autocomplete="off"></div>
+        <div class="field wide"><label for="medico">Campo 15 · Profissional solicitante</label><input id="medico" autocomplete="off"></div>
+        <div class="field"><label for="conselho">Campo 16 · Conselho</label><input id="conselho" value="CRM" autocomplete="off"></div>
+        <div class="field"><label for="registro">Campo 17 · Registro</label><input id="registro" autocomplete="off"></div>
+        <div class="field"><label for="uf">Campo 18 · UF</label><input id="uf" maxlength="2" autocomplete="off"></div>
+        <div class="field"><label for="data">Campo 22 · Data da solicitação</label><input id="data" placeholder="DD/MM/AAAA" autocomplete="off"></div>
+        <div class="field wide"><label for="cid">Campo 23 · Indicação clínica / CID</label><input id="cid" autocomplete="off"></div>
+        <div class="field wide"><label for="nome-cartao">Nome lido na carteirinha (conferência)</label><div class="card-name-row"><input id="nome-cartao" autocomplete="off" placeholder="Digite ou corrija o nome reconhecido"><button id="usar-nome-cartao" type="button" class="btn btn-subtle">Usar no campo 10</button></div><small>Este nome pode ser corrigido manualmente. Clique em “Usar no campo 10” para copiá-lo à guia.</small></div>
+      </div><p class="hint">Confira o nome no pedido e no cartão, a numeração e as datas. Se o OCR não reconhecer algum dado, você pode digitá-lo.</p>
+    </section>
+    <section class="panel" aria-labelledby="h3"><div class="sect-head"><span class="number">3</span><h2 id="h3">Confira os exames e códigos TUSS</h2></div><p class="muted lead">Exames sem código seguro ficam pendentes. Digite o código correspondente (8 dígitos) e confirme a descrição antes de emitir. A tabela permite incluir ou excluir exames.</p>
+      <div class="stats"><span class="pill" id="contagem">0 exames</span><span class="pill" id="encontrados">0 códigos localizados</span><span class="pill" id="pendentes">0 pendentes</span></div>
+      <div class="table-area"><table class="exam-table"><thead><tr><th>#</th><th>Exame do pedido</th><th>25 · Código TUSS</th><th>26 · Descrição</th><th>27 · Qt. solic.</th><th>28 · Qt. autoriz.</th><th>Situação</th><th>Excluir</th></tr></thead><tbody id="linhas"><tr id="vazio"><td colspan="8" class="muted" style="padding:22px">Após analisar os anexos, os procedimentos serão exibidos aqui.</td></tr></tbody></table></div>
+      <div class="actionbar"><button class="btn" id="adicionar" type="button">+ Adicionar exame</button><button class="btn" id="verificar" type="button">Validar códigos e quantidades</button></div>
+      <div class="status" id="status-codigos" role="status">Códigos ausentes devem ser informados antes de gerar a guia.</div>
+      <p class="hint"><strong>Atenção aos nomes:</strong> ácido fólico (40301087) corresponde, na TUSS, à dosagem <strong>nos eritrócitos</strong>; 40302520 corresponde a <strong>transferrina</strong>, não necessariamente ao índice de saturação. Para esses nomes ambíguos, o sistema pede confirmação manual antes de associar o código.</p>
+      <details><summary>Consultar catálogo com os 67 códigos cadastrados</summary><input id="buscar-catalogo" class="lookup" placeholder="Pesquisar exame, sinônimo ou código TUSS"><div id="catalogo" class="catalog-grid"></div></details>
+    </section>
+    <section class="panel" aria-labelledby="h4"><div class="sect-head"><span class="number">4</span><h2 id="h4">Gerar guia preenchida</h2></div><p class="muted"><span id="explicacao-geracao">Selecione uma guia e analise os documentos para identificar os campos.</span> Confira os dados e os exames antes de gerar. A quantidade autorizada preenchida não equivale à autorização da operadora.</p>
+      <div class="actionbar"><button class="btn btn-primary" id="gerar" type="button">Gerar PDF preenchido</button></div><div class="status" id="status-final" role="status">Nenhuma guia gerada ainda.</div><a class="download" id="download" href="#" download hidden>↓ Baixar guia SP/SADT preenchida</a>
+    </section>
+    </div>
+    <div id="aba-valor" role="tabpanel" aria-labelledby="tab-valor" hidden>
+      <section class="panel noprint" aria-labelledby="v1"><div class="sect-head"><span class="number">1</span><h2 id="v1">Anexe a guia autorizada</h2></div>
+        <p class="muted lead">PDF digitalizado ou foto da guia SP/SADT já autorizada (todas as páginas no mesmo arquivo). O sistema identifica o convênio, o paciente, o número da guia e os códigos, e soma os valores pela tabela do convênio.</p>
+        <div class="uploads" style="grid-template-columns:1fr"><label class="upload"><strong>Guia SP/SADT autorizada</strong><span class="note">PDF ou imagem. Pode anexar mais de um arquivo; guias diferentes são separadas pelo número da guia.</span><input type="file" id="aut-arquivo" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,image/*,application/pdf"></label></div>
+        <div class="actionbar"><button class="btn btn-primary" id="aut-ler" type="button">Ler guia e calcular valor</button><button class="btn btn-subtle" id="aut-manual" type="button">Calcular sem anexo (digitar códigos)</button><button class="btn btn-subtle" id="aut-limpar" type="button">Limpar</button></div>
+        <div class="status" id="aut-status" role="status">Anexe a guia autorizada para iniciar.</div><div class="progress" id="aut-progress" hidden><i id="aut-progress-bar"></i></div>
+      </section>
+      <section class="panel" id="aut-resultado" aria-labelledby="v2" hidden><div class="sect-head noprint"><span class="number">2</span><h2 id="v2">Confira e some</h2></div><div id="aut-guias"></div></section>
+      <details class="panel noprint" style="margin-top:0"><summary>Tabelas de valores carregadas</summary><div id="aut-fontes" class="muted" style="margin-top:12px;line-height:1.7">As tabelas são carregadas ao abrir esta aba.</div></details>
+    </div>
+  </main>
+  <footer class="footer">Uso administrativo com revisão humana obrigatória. Não publica anexos no GitHub. A primeira carga precisa de internet para baixar bibliotecas e modelos OCR. Nunca envie documentos de pacientes para o repositório.</footer>
+<script>
+'use strict';
+const CATALOGO = [["40316246", "Estradiol - pesquisa e/ou dosagem", "estradiol"], ["40302830", "Vitamina D 25 HIDROXI, pesquisa e/ou dosagem (Vitamina D3)", "vitamina d 25 hidroxi|25 oh vitamina d|25 oh d|vitamina d3 25 hidroxi|25-hidroxivitamina d"], ["40316190", "Cortisol - pesquisa e/ou dosagem", "cortisol"], ["40308553", "Anti transglutaminase tecidual - IgA", "anti transglutaminase iga|anticorpos anti transglutaminase tecidual iga|antitransglutaminase iga"], ["40316360", "Insulina - pesquisa e/ou dosagem", "insulina|insulina em jejum"], ["40302512", "Transaminase pirúvica (amino transferase de alanina) - pesquisa e/ou dosagem", "tgp|alt|transaminase piruvica|alanina aminotransferase"], ["40302750", "Perfil lipídico / lipidograma (lípidios totais, colesterol, triglicerídios e eletroforese lipoproteínas) - pesquisa e/ou dosagem", "lipidograma|perfil lipidico|perfil de lipideos"], ["40316521", "Tireoestimulante, hormônio (TSH) - pesquisa e/ou dosagem", "tsh|hormonio tireoestimulante|tireoestimulante"], ["40316408", "Progesterona - pesquisa e/ou dosagem", "progesterona"], ["40316076", "Androstenediona - pesquisa e/ou dosagem", "androstenediona"], ["40302059", "Glicose-6-fosfato deidrogenase (G6FD) - pesquisa e/ou dosagem", "g6pd|g6fd|glicose 6 fosfato desidrogenase"], ["40316220", "Dehidrotestosterona (DHT) - pesquisa e/ou dosagem", "dht|dihidrotestosterona|dehidrotestosterona"], ["40313190", "Metais Al, As, Cd, Cr, Mn, Hg, Ni, Zn, Co, outro (s) absorção atômica (cada) - pesquisa e/ou dosagem", "metais absorcao atomica|metais por absorcao atomica"], ["40301931", "Fósforo - pesquisa e/ou dosagem", "fosforo"], ["40302520", "Transferrina - pesquisa e/ou dosagem", "transferrina|indice de saturacao de transferrina|indice saturacao transferrina|indice saturacao de transferrina|saturacao de transferrina"], ["40302580", "Uréia - pesquisa e/ou dosagem", "ureia"], ["40313255", "Selênio, dosagem", "selenio"], ["40304361", "Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas)", "hemograma|hemograma completo|hemograma com plaquetas"], ["40302318", "Potássio - pesquisa e/ou dosagem", "potassio"], ["40301630", "Creatinina - pesquisa e/ou dosagem", "creatinina"], ["40302113", "Homocisteína - pesquisa e/ou dosagem", "homocisteina"], ["40308391", "Proteína C reativa, quantitativa - pesquisa e/ou dosagem", "proteina c reativa quantitativa|pcr quantitativa|pcr quantitativo"], ["40316491", "T4 livre - pesquisa e/ou dosagem", "t4 livre|t4 l|tiroxina livre|t4l"], ["40301060", "Ácido ascórbico (vitamina C) - pesquisa e/ou dosagem", "vitamina c|acido ascorbico"], ["40316459", "Sulfato de dehidroepiandrosterona (S-DHEA) - pesquisa e/ou dosagem", "s dhea|dhea s|dheas|sulfato de dehidroepiandrosterona"], ["40316300", "Globulina de ligação de hormônios sexuais (SHBG) - pesquisa e/ou dosagem", "shbg|globulina de ligacao de hormonios sexuais"], ["40316424", "PTH - pesquisa e/ou dosagem", "pth|paratormonio|hormonio paratireoideo"], ["40302733", "Hemoglobina glicada (Fração A1c) - pesquisa e/ou dosagem", "hemoglobina glicada|hba1c|glicada|a1c"], ["40301990", "Gama-glutamil transferase - pesquisa e/ou dosagem", "ggt|gama gt|gama glutamil transferase"], ["40316440", "Somatomedina C (IGF1) - pesquisa e/ou dosagem", "igf1|igf 1|somatomedina c"], ["40302423", "Sódio - pesquisa e/ou dosagem", "sodio"], ["40313107", "Chumbo - pesquisa e/ou dosagem", "chumbo"], ["40301400", "Cálcio - pesquisa e/ou dosagem", "calcio|calcio total"], ["40316572", "Vitamina B12 - pesquisa e/ou dosagem", "vitamina b12|b12|cobalamina"], ["40316289", "Folículo estimulante, hormônio (FSH) - pesquisa e/ou dosagem", "fsh|hormonio foliculo estimulante"], ["40302237", "Magnésio - pesquisa e/ou dosagem", "magnesio"], ["40306259", "Anticorpos antiendomisio - IgG, IgM, IgA (cada) - pesquisa e/ou dosagem", "antiendomisio|anti endomisio|anticorpos antiendomisio"], ["40306860", "Fator reumatóide, quantitativo - pesquisa e/ou dosagem", "fator reumatoide|fr quantitativo|fator reumatoide quantitativo"], ["40313328", "Zinco - pesquisa e/ou dosagem", "zinco"], ["40301273", "Alumínio, pesquisa e/ou dosagem no soro", "aluminio no soro|aluminio serico|aluminio"], ["40301419", "Cálcio iônico - pesquisa e/ou dosagem", "calcio ionico|calcio ionizado"], ["40301087", "Ácido fólico, pesquisa e/ou dosagem nos eritrócitos", "acido folico nos eritrocitos|folato eritrocitario|acido folico eritrocitario|acido folico|folato"], ["40302601", "Vitamina A, pesquisa e/ou dosagem", "vitamina a|retinol"], ["40316394", "Peptídeo C - pesquisa e/ou dosagem", "peptideo c"], ["40313310", "Cromo - pesquisa e/ou dosagem", "cromo"], ["40316106", "Anticorpos antitireóide (tireoglobulina) - pesquisa e/ou dosagem", "anticorpos anti tireoglobulina|anti tireoglobulina|anti tg|antitireoglobulina"], ["40316084", "Anticorpo anti-receptor de TSH (TRAB) - pesquisa e/ou dosagem", "trab|anti receptor de tsh|anticorpo anti receptor de tsh"], ["40302385", "Proteínas totais albumina e globulina - pesquisa e/ou dosagem", "proteinas totais albumina globulina|proteinas totais e fracoes"], ["40305015", "1,25-dihidroxi vitamina D - pesquisa e/ou dosagem", "1 25 dihidroxi vitamina d|vitamina d 1 25|calcitriol"], ["40306313", "Antigliadina (glúten) - IgG - pesquisa e/ou dosagem", "antigliadina igg|anti gliadina igg"], ["40316270", "Ferritina - pesquisa e/ou dosagem", "ferritina"], ["40301150", "Ácido úrico - pesquisa e/ou dosagem", "acido urico|uricemia"], ["40306852", "Fator antinúcleo, (FAN) - pesquisa e/ou dosagem", "fan|fator antinucleo"], ["40316467", "T3 livre - pesquisa e/ou dosagem", "t3 livre|t3 l|triiodotironina livre|t3l"], ["40302040", "Glicose - pesquisa e/ou dosagem", "glicose|glicose em jejum|glicemia em jejum|glicemia"], ["40302504", "Transaminase oxalacética (amino transferase aspartato) - pesquisa e/ou dosagem", "tgo|ast|transaminase oxalacetica|aspartato aminotransferase"], ["40316157", "Anti-TPO - pesquisa e/ou dosagem", "anti tpo|antitpo|anticorpos antiperoxidase tireoidiana"], ["40316335", "Hormônio luteinizante (LH) - pesquisa e/ou dosagem", "lh|hormonio luteinizante"], ["40301885", "Fosfatase alcalina - pesquisa e/ou dosagem", "fal|fosfatase alcalina|fosfatase alcalina total"], ["40301397", "Bilirrubinas (total e frações) - pesquisa e/ou dosagem", "bilirrubinas|bilirrubina total e fracoes|bilirrubinas totais e fracoes|bilirrubina total e direta|bilirrubina total"], ["40316505", "Testosterona livre - pesquisa e/ou dosagem", "testosterona livre|testosterona l|testo livre"], ["40316513", "Testosterona total - pesquisa e/ou dosagem", "testosterona total|testo total"], ["40316416", "Prolactina - pesquisa e/ou dosagem", "prolactina|prl"], ["40301842", "Ferro sérico - pesquisa e/ou dosagem", "ferro|ferro serico|ferro no sangue"]];
+CATALOGO.push(...[["40304299", "Grupo sanguíneo ABO e fator Rho (inclui Du) - determinação", "tipagem e grupo sanguineo|tipagem sanguinea|grupo sanguineo abo e rh|tipagem abo rh"], ["40304590", "Tempo de protrombina - determinação", "tap|tempo de protrombina|tempo e atividade de protrombina"], ["40304639", "Tempo de tromboplastina parcial ativada - determinação", "ttp|ttpa|tempo de tromboplastina parcial ativada"]]);
+for(const entry of CATALOGO){
+ if(entry[0]==='40316360')entry[2]+='|insulina basal';
+ if(entry[0]==='40302040')entry[2]+='|glicose de jejum|glicose em jejum';
+ if(entry[0]==='40316289')entry[2]+='|hormonio foliculo estimulante';
+}
+const BASE = new Map(CATALOGO.map(([c,d])=>[c,d]));
+const normalize = value => String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+const code8 = v => String(v??'').replace(/\D/g,'');
+const ALIASES = new Map();
+for (const [code,, aliases] of CATALOGO) for (const alias of aliases.split('|')) {
+  const k=normalize(alias); if(!ALIASES.has(k))ALIASES.set(k,code);
+}
+const $=id=>document.getElementById(id);
+let rows=[];let nameFromCard='';let orderName='';let sourceGuideText='';let guideModel='BC';let downloadUrl=null;let ocrWorker=null;let busy=false;
+const MESES={janeiro:1,fevereiro:2,marco:3,abril:4,maio:5,junho:6,julho:7,agosto:8,setembro:9,outubro:10,novembro:11,dezembro:12};
+const CRITICAL={
+  'acido folico':'40301087 é ácido fólico NOS ERITRÓCITOS. Confirme a amostra/método antes de associar.',
+  'indice de saturacao de transferrina':'40302520 identifica TRANSFERRINA, não necessariamente o índice de saturação. Confirme o código com o laboratório.',
+  'indice saturacao transferrina':'40302520 identifica TRANSFERRINA, não necessariamente o índice de saturação. Confirme o código com o laboratório.',
+  'indice saturacao de transferrina':'40302520 identifica TRANSFERRINA, não necessariamente o índice de saturação. Confirme o código com o laboratório.',
+  'saturacao de transferrina':'40302520 identifica TRANSFERRINA, não necessariamente o índice de saturação. Confirme o código com o laboratório.',
+  'pcr us':'PCR ultrassensível pode não corresponder à PCR quantitativa. Confirme o código.',
+  'pcr ultrassensivel':'Confirme o código da metodologia ultrassensível.',
+  'vitamina d':'Vitamina D 25-OH ou 1,25-di-hidroxi? Confirme o exame exato.',
+  'vit d':'Vitamina D 25-OH ou 1,25-di-hidroxi? Confirme o exame exato.',
+  'indice homa ir':'Índice calculado; informe o código se existir no contrato ou remova a linha e solicite o cálculo separadamente.',
+  'homa ir':'Índice calculado; informe o código se existir no contrato ou remova a linha e solicite o cálculo separadamente.',
+  'homa beta':'Índice calculado a partir de glicose e insulina. Não atribuir automaticamente um código TUSS.',
+  'vitamina d':'Vitamina D 25-OH ou 1,25-di-hidroxi? Confirme o exame exato.'
+};
+function status(id,message,kind=''){$(id).textContent=message;$(id).className='status'+(kind?' '+kind:'');}
+function progress(percent){$('progress').hidden=false;$('progress-bar').style.width=percent+'%'}
+function sleep(n=0){return new Promise(r=>setTimeout(r,n))}
+function setBusy(yes){busy=yes;for(const id of ['analisar','gerar','limpar'])$(id).disabled=yes}
+function needLib(name,global){if(!window[global])throw Error('Não foi possível carregar '+name+'. Verifique sua conexão com a internet e recarregue a página.')}
+function safeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function numericDate(s){const m=String(s).match(/\b([0-3]?\d)\/([01]?\d)\/(20\d\d)\b/);if(!m)return'';const d=+m[1],month=+m[2];return d>=1&&d<=31&&month>=1&&month<=12?`${String(d).padStart(2,'0')}/${String(month).padStart(2,'0')}/${m[3]}`:''}
+function datePT(s){const direct=numericDate(s);if(direct)return direct;const m=String(s).match(/\b([0-3]?\d)\s+de\s+([A-Za-zÀ-ÿ]+)\s+de\s+(20\d\d)\b/i);if(!m)return'';const mm=MESES[normalize(m[2])];return mm?`${String(+m[1]).padStart(2,'0')}/${String(mm).padStart(2,'0')}/${m[3]}`:''}
+function getCard(text){
+  const lines=String(text||'').replace(/\r/g,'\n').split('\n').map(v=>v.trim()).filter(Boolean);
+  const headline=lines.slice(0,24);
+  let carteira='',validade='',nome='';
+  // Priorizar o cabeçalho da carteirinha: não confundir nº ANS, CNS e nascimento.
+  const candidates=[];
+  for(let i=0;i<headline.length;i++){
+    const s=headline[i];
+    const beforeDate=s.split(/\b[0-3]?\d\/[01]?\d\/20\d{2}\b/)[0];
+    const hits=[...beforeDate.matchAll(/\b(?:\d{3}[.\s-]){3}\d{3}\b/g)];
+    if(!hits.length)hits.push(...beforeDate.matchAll(/(?:\d[\d.\s\-Xx]{10,23}\d)/g));
+    for(const m of hits){
+      const c=m[0].replace(/[^\dXx]/g,'').toUpperCase();
+      if(c.length>=12&&c.length<=17&&!/^\d{2}\/\d{2}/.test(s)){
+        const context=(headline.slice(Math.max(i-1,0),i+3).join(' ')).toLowerCase();
+        let score=0;
+        if(/numero do cart|numero de cart|n.mero do cart/.test(normalize(context)))score+=8;
+        if(i<=7)score+=4;
+        if(c.length===12||c.includes('X'))score+=3;
+        if(/cartao nacional|registro ans|nascimento/.test(normalize(context)))score-=8;
+        candidates.push({c,score});
+      }
+    }
+  }
+  candidates.sort((a,b)=>b.score-a.score);
+  carteira=candidates[0]?.c||'';
+  for(let i=0;i<Math.min(14,lines.length);i++){
+    const values=lines[i].match(/\b[0-3]?\d\/[01]?\d\/20\d{2}\b/g)||[];
+    for(const v of values){
+      const context=normalize(lines.slice(Math.max(0,i-1),i+2).join(' '));
+      if(/nascimento/.test(context)&&!/validade/.test(context))continue;
+      if(/validade/.test(context)||i<=4){validade=numericDate(v);break}
+    }
+    if(validade)break;
+  }
+  const plausibleName=s=>{
+    const t=String(s||'').replace(/[^A-Za-zÀ-ÿ \-]/g,' ').replace(/\s+/g,' ').trim();
+    const norm=normalize(t);
+    if(!t||t.split(' ').length<2||/cartao|beneficiar|validade|nascimento|plano|saude|ans|numero/.test(norm)||/\d/.test(s))return'';
+    return t.toUpperCase();
+  };
+  for(let i=0;i<headline.length;i++){
+    const line=headline[i],n=normalize(line);
+    if(/nome do b|nome do benefici|beneficiario|beneficiaria/.test(n)){
+      const inline=line.replace(/^.*?(?:benefici[aá]ri[oa]|nome do b(?:enefici[aá]ri[oa])?)\s*:?\s*/i,'');
+      nome=plausibleName(headline[i-1])||plausibleName(inline)||plausibleName(headline[i+1]);
+      if(nome)break;
+    }
+  }
+  if(!nome){const top=headline.slice(0,10).map(plausibleName).filter(Boolean);nome=top.find(v=>v.split(' ').length>=3)||''}
+  const whole=normalize(text);
+  let cns='';const cnsMatch=String(text).match(/\b\d{15}\b/g)||[];
+  if(/cartao nacional de saude/.test(whole))cns=cnsMatch.find(v=>v!==carteira)||'';
+  const plano=/\bpme\s*-?\s*plano medico/i.test(text)?'PME - Plano Médico Estendido':'';
+  return{carteira,validade,nome,cns,plano};
+}
+function getOrderMeta(text){
+  const lines=String(text||'').split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const who=String(text).match(/^\s*PACIENTE\s*:\s*(.+)$/im);
+  const cid=String(text).match(/\bCID(?:-10)?\s*:?\s*([A-Z]\d\d(?:\.\d{1,2})?)/i);
+  const crm=String(text).match(/\bCRM\s*[-/]?\s*([A-Z]{2})?\s*(\d{3,8})\b/i);
+  let medico='';if(crm){const before=String(text).substring(0,crm.index).split(/\n/).map(t=>t.trim());
+    for(const t of before.slice(-5).reverse()){
+      const n=normalize(t);
+      if(t.split(/\s+/).length>=3&&/[a-zà-ÿ]/i.test(t)&&!/brasilia|outubro|solicitacao|paciente|\d{4}|assinatura|clinica/.test(n)){medico=t.toUpperCase();break}
+    }
+  }
+  const uf=crm?.[1]||(/brasilia\s*(?:-|\/)\s*df|brasilia\b/i.test(text)?'DF':'');
+  return{paciente:who?who[1].trim().toUpperCase():'',medico,conselho:crm?'CRM':'',numero:crm?crm[2]:'',uf:uf.toUpperCase(),data:datePT(text),cid:cid?cid[1].toUpperCase():''};
+}
+const OCR_ALTERNATIVES = {
+  'licose de jejum':'GLICOSE DE JEJUM', 'glicose de jejum':'GLICOSE DE JEJUM',
+  'lipidograna':'LIPIDOGRAMA', 't4l':'T4 LIVRE', '14l':'T4 LIVRE',
+  'tal':'T4 LIVRE', 'hormonio folico estimulante':'HORMONIO FOLICULO ESTIMULANTE',
+  'hormonio foliculo estimulante':'HORMONIO FOLICULO ESTIMULANTE',
+  'lh':'LH','ih':'LH','insulina basal':'INSULINA BASAL',
+  'homa beta':'HOMA BETA','homa ir':'HOMA IR',
+  'vitamina 812':'VITAMINA B12','vitamina b12':'VITAMINA B12',
+  'reatinina':'CREATININA','creatinina':'CREATININA',
+  'reu':'UREIA', 'ureia':'UREIA',
+  'pth dsquita fa':'PTH', 'pth':'PTH'
+};
+const OCR_SUSPECT = new Set(['tal','14l','ih','reu','reatinina','hormonio folico estimulante','licose de jejum','lipidograna','pth dsquita fa']);
+const SKIP=['paciente','beneficiario','crm','rqe','brasilia','data','indicacao clinica','cid','endereco','telefone','assinatura','solicitacao de exames','pedido medico','powered by','observacoes','exames solicitados','solicitante','nascimento','dra ','dr ','validade','nome','folha','pagina','email','@','instagram','cnpj'];
+function findExams(text){
+ const lines=String(text||'').replace(/\r/g,'\n').split('\n');
+ let collecting=false,hasHeader=lines.some(s=>normalize(s).includes('exames')&&normalize(s).length<37);
+ if(!hasHeader)return[];const docName=normalize(getOrderMeta(text).medico);
+ const found=[],seen=new Set();
+ for(let line of lines){
+   let s=line.trim().replace(/^[\s•·\-*0-9.)]+/,'').trim();
+   let norm=normalize(s);
+   if(/^exames(?: laboratoriais| solicitados)?\b/.test(norm)){collecting=true;s=s.replace(/^exames(?: laboratoriais| solicitados)?\s*:?/i,'').trim();norm=normalize(s);if(!s)continue}
+   if(/indicacao clinica|cid ?10|cid [a-z][0-9]|joao silva mesquita|crm \d|powered by/.test(norm)&&collecting)break;
+   if(!collecting&&hasHeader)continue;
+   if(!s||normalize(s)===docName||s.length>90||s.length<2||SKIP.some(k=>norm.startsWith(k))||/^[^A-Za-zÀ-ÿ]+$/.test(s))continue;
+   if(/^\d+$/.test(norm)||/^(clinica|www|site|centro|telefone|medicina|consulta|contato|exames)$/.test(norm))continue;
+   // Correções restritas a abreviações conhecidas e ruídos observados em pedido escaneado.
+   s=s.replace(/^[\(\[\\]+/,'').replace(/[º{}]+$/,'').trim();norm=normalize(s);
+   const before=norm;
+   if(norm==='livre'&&normalize(found[found.length-1]?.exam||'')==='testosterona total')s='TESTOSTERONA LIVRE';
+   else if(OCR_ALTERNATIVES[norm])s=OCR_ALTERNATIVES[norm];
+   else if(/^pth\b/.test(norm))s='PTH';
+   else if(/^homa beta\b/.test(norm))s='HOMA BETA';
+   else if(/^vitamina 8[1l]2\b/.test(norm))s='VITAMINA B12';
+   else if(/hemograma/.test(norm)&&/completo|com leto/.test(norm))s='HEMOGRAMA COMPLETO';
+   norm=normalize(s);
+   if(!norm||norm.length<2||seen.has(norm))continue;
+   seen.add(norm);found.push({exam:s,source:line.trim(),suspect:OCR_SUSPECT.has(before)});
+ }
+ return found;
+}
+function matchExam(exam){const explicit=String(exam).match(/(?:\d\.\d{2}\.\d{2}\.\d{3}|\b\d{8}\b)/);if(explicit){const code=code8(explicit[0]);return{code,desc:BASE.get(code)||'',message:BASE.has(code)?'Código explícito no pedido':'Código fora do catálogo: informe a descrição',manual:false}}
+  const n=normalize(exam);if(CRITICAL[n])return{code:'',desc:'',message:'CONFIRMAR: '+CRITICAL[n],manual:false};
+  let code=ALIASES.get(n);if(code)return{code,desc:BASE.get(code),message:'Correspondência direta',manual:false};
+  const generic=n.replace(/\b(pesquisa|dosagem|serica|serico|plasma|sangue|exame|quantitativa|quantitativo)\b/g,'').replace(/\s+/g,' ').trim();code=ALIASES.get(generic);
+  if(code&&!CRITICAL[generic])return{code,desc:BASE.get(code),message:'Correspondência normalizada',manual:false};
+  return{code:'',desc:'',message:'QUAL O CÓDIGO? Não localizado no catálogo; informe e confira.',manual:false};}
+function displayStatus(row){
+  if(!row.code)return{msg:row.message?.startsWith('CONFIRMAR')?row.message:'Informe o código deste exame',ok:false};
+  const cod=code8(row.code);if(cod.length!==8)return{msg:'Código deve ter 8 dígitos',ok:false};
+  if(row.suspect&&!row.confirmed)return{msg:'OCR incerto: confira com o pedido e clique Confirmar',ok:false,review:true};
+  if(BASE.has(cod))return{msg:row.manual?'Código conferido manualmente':`Código no catálogo (${BASE.size})`,ok:true};
+  if(!row.desc.trim())return{msg:'Código externo: informe a descrição',ok:false};
+  return{msg:'Código externo informado: confira a descrição',ok:true,external:true};
+}
+function renderRows(){const tbody=$('linhas');tbody.replaceChildren();if(!rows.length){tbody.innerHTML='<tr><td colspan="8" class="muted" style="padding:22px">Nenhum exame adicionado.</td></tr>'}
+  rows.forEach((row,i)=>{const s=displayStatus(row);const tr=document.createElement('tr');tr.className=s.ok?'valid':s.external?'pending':'pending';const num=document.createElement('td');num.textContent=i+1;tr.append(num);
+    const input=(key,cls='',type='text')=>{const td=document.createElement('td');const el=document.createElement('input');el.type=type;el.value=row[key]??'';el.className=cls;el.setAttribute('aria-label',`${key} do exame ${i+1}`);if(key==='code'){el.inputMode='numeric';el.maxLength=16;el.setAttribute('list','codes-options')}if(key==='qs'||key==='qa'){el.type='number';el.min='0';el.step='1'}
+      el.addEventListener('input',()=>{row[key]=el.value;if(key==='code'){row.code=code8(row.code).slice(0,8);row.manual=true;row.confirmed=true;if(BASE.has(row.code)){row.desc=BASE.get(row.code);row.message='Código informado manualmente'}else row.message='Código externo: conferir';renderRows();const next=tbody.children[i]?.children[2]?.querySelector('input');if(next){next.focus();next.setSelectionRange(next.value.length,next.value.length)}return}if(key==='desc')row.manual=true;if(key==='exam'&&row.suspect){row.suspect=false;row.confirmed=true;row.manual=true}refreshCounts();updateSingleStatus(tr,row)});td.append(el);return td};
+    tr.append(input('exam','exam-field'),input('code','code-field'),input('desc','desc-field'),input('qs','qt'),input('qa','qt'));
+    const st=document.createElement('td');st.className='state'+(s.ok?' good':' bad');st.textContent=s.msg;if(s.review){const original=document.createElement('div');original.style.cssText='font-weight:400;margin-top:4px';original.textContent=`OCR leu: ${row.source||row.exam}`;st.append(original);const b=document.createElement('button');b.type='button';b.className='btn btn-subtle';b.style.cssText='font-size:11px;padding:4px 8px;min-height:28px;margin-top:5px;display:block';b.textContent='Confirmar sugestão';b.addEventListener('click',()=>{row.confirmed=true;row.manual=true;renderRows()});st.append(b)}tr.append(st);
+    const del=document.createElement('td');const btn=document.createElement('button');btn.className='icon-btn';btn.type='button';btn.textContent='×';btn.title='Excluir exame';btn.setAttribute('aria-label',`Excluir exame ${i+1}`);btn.addEventListener('click',()=>{rows.splice(i,1);renderRows()});del.append(btn);tr.append(del);tbody.append(tr);
+  });refreshCounts();}
+function updateSingleStatus(tr,row){const s=displayStatus(row);tr.className=s.ok?'valid':'pending';const cell=tr.querySelector('.state');cell.textContent=s.msg;cell.className='state'+(s.ok?' good':' bad')}
+function refreshCounts(){const count=rows.filter(r=>r.exam||r.code).length;const found=rows.filter(r=>displayStatus(r).ok).length;$('contagem').textContent=`${count} exame(s)`;$('encontrados').textContent=`${found} com código informado`;$('pendentes').textContent=`${count-found} requer(em) conferência`}
+function makeRow(info){const exam=typeof info==='string'?info:info.exam;const m=matchExam(exam);return{exam,source:info.source||exam,suspect:!!info.suspect,confirmed:!info.suspect,code:m.code,desc:m.desc,qs:'1',qa:'1',message:m.message,manual:false}}
+function validateRows(){const problems=[];const parsed=[];rows.forEach((r,i)=>{if(!r.exam.trim()&&!r.code.trim()&&!r.desc.trim())return;const n=i+1;const code=code8(r.code);if(r.suspect&&!r.confirmed)problems.push(`Linha ${n} (${r.exam}): reconhecimento incerto, confira e clique Confirmar sugestão.`);if(code.length!==8)problems.push(`Linha ${n} (${r.exam}): informe o código TUSS com 8 dígitos.`);else if(BASE.has(code))r.desc=BASE.get(code);else if(!r.desc.trim())problems.push(`Linha ${n} (${r.exam}): informe a descrição do código externo ${code}.`);
+    for(const [label,key] of [['solicitada','qs'],['autorizada','qa']])if(!/^(0|[1-9]\d*)$/.test(String(r[key])))problems.push(`Linha ${n}: quantidade ${label} deve ser inteiro não negativo.`);
+    if(code.length===8&&r.desc.trim()&&/^(0|[1-9]\d*)$/.test(r.qs)&&/^(0|[1-9]\d*)$/.test(r.qa))parsed.push({...r,code});});if(!parsed.length)problems.push('Inclua pelo menos um procedimento.');return{problems,parsed}}
+let ocrLoggerHook=null;
+async function getWorker(statusId='status-arquivos'){needLib('Tesseract.js','Tesseract');if(ocrWorker)return ocrWorker;status(statusId,'Baixando modelo OCR em português. Isto pode levar algum tempo na primeira utilização.');try{ocrWorker=await Tesseract.createWorker('por',1,{logger:m=>{if(ocrLoggerHook){ocrLoggerHook(m);return}if(m.status==='recognizing text')progress(25+Math.round((m.progress||0)*60))}});return ocrWorker}catch(ex){ocrWorker=null;throw new Error('OCR indisponível. Verifique a conexão e tente novamente. '+ex.message)}}
+async function performOCR(blob,psm='3'){
+  const worker=await getWorker();
+  await worker.setParameters({tessedit_pageseg_mode:psm,tessedit_char_whitelist:''});
+  const output=await worker.recognize(blob);
+  return output.data.text||'';
+}
+async function preprocessCardCanvas(image){
+  const canvas=document.createElement('canvas');
+  const x=Math.round(image.width*.04),y=Math.round(image.height*.08),w=Math.round(image.width*.93),h=Math.round(image.height*.34);
+  canvas.width=w;canvas.height=h;
+  const cx=canvas.getContext('2d',{willReadFrequently:true});cx.drawImage(image,x,y,w,h,0,0,w,h);
+  const raw=cx.getImageData(0,0,w,h);const p=raw.data;
+  // Aumenta contraste local para evitar que o título escuro esconda nº e nome.
+  for(let i=0;i<p.length;i+=4){const lum=.299*p[i]+.587*p[i+1]+.114*p[i+2];const v=Math.max(0,Math.min(255,(lum-128)*1.8+128));p[i]=v;p[i+1]=v;p[i+2]=v;}
+  cx.putImageData(raw,0,0);
+  return await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+}
+async function imageOCR(file,card=false){
+  if(!card)return performOCR(file);
+  const bitmap=await createImageBitmap(file);
+  try{const cropped=await preprocessCardCanvas(bitmap);const top=await performOCR(cropped,'6');return top+'\n'+await performOCR(file,'3')}
+  finally{bitmap.close()}
+}
+function textFromItems(items){const lines=[];let lastY=null,lastX=null,line='';const sorted=[...items].filter(i=>i.str?.trim()).sort((a,b)=>{const dy=b.transform[5]-a.transform[5];return Math.abs(dy)>3?dy:a.transform[4]-b.transform[4]});for(const it of sorted){const x=it.transform[4],y=it.transform[5];if(lastY===null||Math.abs(y-lastY)>3){if(line.trim())lines.push(line.trim());line=it.str}else{line+=((it.hasEOL||lastX===null||x-lastX>3)?' ':'')+it.str}lastY=y;lastX=x+(it.width||0)}if(line.trim())lines.push(line.trim());return lines.join('\n')}
+async function pdfToText(file,card=false){
+  needLib('PDF.js','pdfjsLib');
+  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+  const chunks=[],maximum=Math.min(pdf.numPages,30);
+  try{for(let p=1;p<=maximum;p++){
+    status('status-arquivos',`Lendo ${card?'carteirinha':'pedido médico'}: página ${p} de ${maximum}…`);
+    progress(10+Math.round(p/maximum*20));const page=await pdf.getPage(p);
+    const text=textFromItems((await page.getTextContent()).items);
+    // Nunca confiar apenas na camada OCR embutida de um PDF escaneado.
+    // Caracteres corrompidos como §, exames omitidos e pouca informação acionam nova leitura.
+    const scanned=card||/[§]/.test(text)||/\[[/\\]/.test(text)||text.replace(/\s/g,'').length<90;
+    const needsOCR=scanned||(/exames/i.test(text)&&findExams(text).length<7);
+    if(needsOCR){const viewport=page.getViewport({scale:card?3:2.4});
+      const canvas=document.createElement('canvas');canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+      await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+      let blob;if(card)blob=await preprocessCardCanvas(canvas);else blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+      let ocr=await performOCR(blob,card?'6':'3');
+      if(card){const full=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));ocr+='\n'+await performOCR(full,'3')}
+      chunks.push(ocr||text);
+    }else chunks.push(text);
+    page.cleanup();}
+  }finally{await pdf.destroy()}
+  if(pdf.numPages>maximum)throw Error('O documento tem mais de 30 páginas; separe somente as páginas do pedido.');
+  return chunks.join('\n');
+}
+async function readInput(file,card=false){if(!file)return'';if(file.type==='application/pdf'||/\.pdf$/i.test(file.name))return pdfToText(file,card);if(/^image\//.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name))return imageOCR(file,card);throw Error('Formato não suportado: '+file.name)}
+function stringSimilarity(a,b){a=normalize(a);b=normalize(b);if(!a||!b)return 0;const ap=a.split(' ').filter(Boolean),bp=b.split(' ').filter(Boolean);return ap.filter(w=>bp.includes(w)).length/Math.max(ap.length,bp.length)}
+function updateGuideLabels(){
+  const casec=guideModel==='CASEC';
+  const lbl={carteira:8,validade:casec?10:9,paciente:casec?11:10,medico:casec?16:15,
+    conselho:casec?17:16,registro:casec?18:17,uf:casec?19:18,data:casec?21:22,cid:23};
+  const titles={carteira:'Número da carteira',validade:'Validade da carteira',paciente:'Beneficiário',medico:'Profissional solicitante',conselho:'Conselho',registro:'Registro',uf:'UF',data:'Data da solicitação',cid:casec?'CID-10':'Indicação clínica / CID'};
+  for(const [k,v] of Object.entries(lbl))document.querySelector(`label[for="${k}"]`).textContent=`Campo ${v} · ${titles[k]}`;
+  const th=$('linhas').closest('table').querySelectorAll('thead th');
+  th[2].textContent=`${casec?26:25} · Código TUSS`;
+  th[3].textContent=`${casec?27:26} · Descrição`;
+  th[4].textContent=`${casec?28:27} · Qt. solic.`;
+  th[5].textContent=`${casec?29:28} · Qt. autoriz.`;
+  $('modelo-detectado').textContent=casec?'Guia identificada: CASEC (campos 26 a 29)':'Guia identificada: Banco Central (campos 25 a 28)';
+  $('plano-wrap').hidden=!casec;
+  $('cns-wrap').hidden=false;
+  $('explicacao-geracao').textContent=casec?'O arquivo CASEC será preenchido nos campos 8, 10 a 12, 16 a 19, 21, 23 e 25 a 29, com até 5 exames por página.':'A guia Banco Central será preenchida nos campos 8 a 10, 15 a 18, 22, 23 e 24 a 28, com até 5 exames por página.';
+  $('usar-nome-cartao').textContent=casec?'Usar no campo 11':'Usar no campo 10';
+}
+async function inspectGuide(file){
+ needLib('PDF.js','pdfjsLib');
+ pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+ const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+ try{if(pdf.numPages!==1)throw Error('Envie uma guia SP/SADT em branco de uma única página.');
+   const page=await pdf.getPage(1),v=page.getViewport({scale:1});
+   if(Math.abs(v.width-842)>8||Math.abs(v.height-596)>8)throw Error('Guia incompatível: exige A4 horizontal.');
+   const text=textFromItems((await page.getTextContent()).items);const n=normalize(text);
+   if(/41\s*229\s*5|9 plano|11 nome|25 tabela/.test(n)&&/guia de servico profissional/.test(n))guideModel='CASEC';
+   else if(/999999|25 codigo do procedimento|24 tabela/.test(n)&&/guia de servico profissional/.test(n))guideModel='BC';
+   else throw Error('Modelo não identificado com segurança. Somente Banco Central e CASEC são suportados.');
+   sourceGuideText=text;updateGuideLabels();
+   return guideModel==='CASEC'?'Guia CASEC identificada (numeração e posições próprias).':'Guia Banco Central identificada.';
+ }finally{await pdf.destroy()}
+}
+function prefill(meta,card){$('carteira').value=card.carteira||'';$('validade').value=card.validade||'';$('nome-cartao').value=card.nome||'';$('paciente').value=meta.paciente||card.nome||'';$('medico').value=meta.medico||'';$('conselho').value=meta.conselho||'CRM';$('registro').value=meta.numero||'';$('uf').value=meta.uf||'';$('data').value=meta.data||'';$('cid').value=meta.cid||'';$('cns').value=card.cns||'';$('plano').value=card.plano||'';nameFromCard=card.nome;orderName=meta.paciente}
+$('analisar').addEventListener('click',async()=>{if(busy)return;const pedido=$('pedido').files[0],cartao=$('cartao').files[0],guia=$('guia').files[0];if(!pedido||!cartao||!guia){status('status-arquivos','Anexe os três documentos antes de continuar.','error');return}setBusy(true);$('download').hidden=true;progress(4);try{needLib('PDF.js','pdfjsLib');const confirmed=await inspectGuide(guia);const order=await readInput(pedido);progress(50);const cardtext=await readInput(cartao,true);progress(93);const meta=getOrderMeta(order),card=getCard(cardtext);prefill(meta,card);const exams=findExams(order);rows=exams.map(makeRow);renderRows();const pending=rows.filter(r=>!displayStatus(r).ok);const warnings=[];if(!exams.length)warnings.push('Nenhum exame identificado automaticamente. Use “Adicionar exame” para preencher a lista.');if(!card.carteira||!card.validade)warnings.push('Número e/ou validade da carteirinha não foram reconhecidos. Confira manualmente.');if(!card.nome)warnings.push('Nome do beneficiário na carteirinha não reconhecido. Confira o documento.');if(card.nome&&meta.paciente&&normalize(card.nome)!==normalize(meta.paciente))warnings.push(`ATENÇÃO: nome no pedido (“${meta.paciente}”) difere do cartão (“${card.nome}”).`);if(!meta.medico||!meta.numero)warnings.push('Nome ou CRM do profissional não foi identificado. Confira manualmente.');if(!order.trim())warnings.push('Texto do pedido não reconhecido. Tente imagem mais nítida ou inclua os exames manualmente.');const message=`${confirmed}\n${exams.length} exames/itens identificados; ${exams.length-pending.length} códigos conferíveis e ${pending.length} pendente(s) de código ou validação de OCR.`+(warnings.length?'\n\n'+warnings.join('\n'):'');status('status-arquivos',message,warnings.length?'warning':'success');status('status-codigos',pending.length?`${pending.length} item(ns) aguardando conferência ou código. Confira os exames originais e clique em Validar.`:'Todos os itens tiveram correspondência. Confira cada descrição antes de emitir.',pending.length?'warning':'success');progress(100);$('h2').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){console.error(e);status('status-arquivos','Não foi possível analisar: '+e.message,'error')}finally{setBusy(false);setTimeout(()=>{$('progress').hidden=true},1600)}});
+$('adicionar').addEventListener('click',()=>{rows.push({exam:'',code:'',desc:'',qs:'1',qa:'1',message:'Preencha os dados do exame',manual:true});renderRows()});
+$('nome-cartao').addEventListener('input',()=>{nameFromCard=$('nome-cartao').value.trim()});
+ $('usar-nome-cartao').addEventListener('click',()=>{const nome=$('nome-cartao').value.trim();if(!nome){status('status-final','Digite um nome no campo de conferência da carteirinha antes de copiar.','warning');$('nome-cartao').focus();return;}$('paciente').value=nome.toUpperCase();nameFromCard=nome;status('status-final',`Nome da carteirinha copiado para o campo ${guideModel==='CASEC'?11:10}. Confira os demais dados antes de gerar.`,'success')});
+$('verificar').addEventListener('click',()=>{const {problems,parsed}=validateRows();renderRows();status('status-codigos',problems.length?`${problems.length} pendência(s):\n`+problems.join('\n'):`${parsed.length} exame(s) válidos. Confira os dados e gere o PDF.`,problems.length?'warning':'success')});
+function textLatin(text){return String(text??'').normalize('NFC').replace(/[\u2010-\u2015]/g,'-').replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/[\u200B-\u200D]/g,'').replace(/[^\u0020-\u007E\u00A0-\u00FF]/g,c=>{const d=c.normalize('NFD').replace(/[\u0300-\u036f]/g,'');return /^[\x20-\x7E]$/.test(d)?d:'?'})}
+function stampText(page,font,text,x,baseline,maxWidth,size,minSize=5,rotated=false){const s=textLatin(text).trim();if(!s)return;let fs=size;while(fs>minSize&&font.widthOfTextAtSize(s,fs)>maxWidth)fs-=.2;if(font.widthOfTextAtSize(s,fs)>maxWidth+1)throw Error('Texto muito grande para o campo: '+s.slice(0,65));page.drawText(s,{x:rotated?baseline:x,y:rotated?x:page.getHeight()-baseline,size:Math.round(fs*10)/10,font,color:PDFLib.rgb(.04,.09,.13),...(rotated?{rotate:PDFLib.degrees(90)}:{})})}
+async function exportPdf(guide,details,procedures){
+ needLib('pdf-lib','PDFLib');
+ const bytes=new Uint8Array(await guide.arrayBuffer());const input=await PDFLib.PDFDocument.load(bytes);
+ if(input.getPageCount()!==1)throw Error('A guia deve ter apenas uma página.');
+ const w=input.getPage(0).getWidth(),h=input.getPage(0).getHeight();
+ const angle=((input.getPage(0).getRotation().angle%360)+360)%360;
+ const isRotated=angle===90&&Math.abs(w-595)<8&&Math.abs(h-842)<8;
+ const isFlat=angle===0&&Math.abs(w-842)<8&&Math.abs(h-596)<8;
+ if(!(isRotated||isFlat))throw Error('Guia com tamanho ou rotação incompatível.');
+ if((guideModel==='CASEC')!==isRotated)throw Error('A orientação do modelo difere da guia identificada. Faça uma nova leitura dos documentos.');
+ const doc=await PDFLib.PDFDocument.create();const font=await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+ const casec=guideModel==='CASEC';
+ for(let pageIdx=0;pageIdx<Math.ceil(procedures.length/5);pageIdx++){
+   const [p]=await doc.copyPages(input,[0]);doc.addPage(p);
+   const fields=casec ? [
+     [details.carteira,55,104,135,8.8],[details.plano||'',204,104,103,7.4],
+     [details.validade,316,104,66,8.5],[details.paciente,391,104,248,8.6],
+     [details.cns||'',653,104,140,7.5],
+     [details.medico,55,147,400,9],[details.conselho,467,147,102,8.5],
+     [details.registro,581,147,100,9],[details.uf,693,147,24,8.5],
+     [details.data,55,174,140,8.5],[details.cid,314,174,60,8.5]
+   ] : [
+     [details.carteira,36,117,135,8.8],[details.validade,192,117,75,8.8],
+     [details.paciente,285,117,290,9],[details.cns||'',586,117,146,8.3],
+     [details.medico,35,168,270,8.6],[details.conselho,326,168,59,8.4],
+     [details.registro,395,168,90,8.6],[details.uf,502,168,24,8.6],
+     [details.data,116,197,100,8.8],[details.cid,231,197,160,8.8]
+   ];
+   for(const [txt,x,y,max,size] of fields)stampText(p,font,txt,x,y,max,size,5,isRotated);
+   for(const [idx,proc] of procedures.slice(pageIdx*5,(pageIdx+1)*5).entries()){
+     const y=casec?(196.4+16.5*idx):(224.3+11.27*idx);
+     if(casec){
+       stampText(p,font,'22',63,y,26,7.4,5,true);
+       stampText(p,font,proc.code,98,y,98,8,5,true);
+       stampText(p,font,proc.desc,204,y,502,7.3,5.8,true);
+       stampText(p,font,proc.qs,723,y,24,8,5,true);
+       stampText(p,font,proc.qa,766,y,24,8,5,true);
+     }else{
+       stampText(p,font,'22',45,y,25,7.2);
+       stampText(p,font,proc.code,82,y,112,7.4);
+       stampText(p,font,proc.desc,207,y,468,6.9,5);
+       stampText(p,font,proc.qs,708,y,22,7.4);
+       stampText(p,font,proc.qa,749,y,22,7.4);
+     }
+   }
+ }
+ doc.setTitle('Guia SP/SADT - '+textLatin(details.paciente));
+ doc.setSubject('Revisão humana obrigatória - não equivale à autorização');return await doc.save();
+}
+$('gerar').addEventListener('click',async()=>{if(busy)return;const guia=$('guia').files[0];if(!guia){status('status-final','Anexe a guia em branco antes de gerar.','error');return}if(!$('pedido').files.length||!$('cartao').files.length){status('status-final','Anexe pedido e carteirinha para conferência.','error');return}
+  const details=Object.fromEntries(['carteira','validade','paciente','medico','conselho','registro','uf','data','cid','cns','plano'].map(k=>[k,$(k).value.trim()]));const missing=['carteira','validade','paciente','medico','conselho','registro','uf'].filter(k=>!details[k]);if(missing.length){status('status-final','Preencha os campos obrigatórios: '+missing.join(', ')+'.','warning');return}if(!numericDate(details.validade)){status('status-final','A validade da carteirinha deve estar em DD/MM/AAAA.','warning');return}if(details.data&&!numericDate(details.data)){status('status-final','A data da solicitação deve estar em DD/MM/AAAA.','warning');return}if(nameFromCard&&normalize(nameFromCard)!==normalize(details.paciente)){status('status-final','O nome preenchido difere do nome da carteirinha. Corrija o campo “Nome lido na carteirinha (conferência)” ou use o botão de copiar o nome antes de gerar.','warning');return}
+  const {problems,parsed}=validateRows();if(problems.length){status('status-final',problems.join('\n'),'warning');$('h3').scrollIntoView({behavior:'smooth'});return}const externos=parsed.filter(p=>!BASE.has(p.code));if(externos.length&&!confirm(`Existem ${externos.length} código(s) não cadastrado(s) no catálogo.\n\n${externos.map(p=>p.code+' — '+p.desc).join('\n')}\n\nVerifique-os no pedido e confirme para continuar.`))return;setBusy(true);try{const result=await exportPdf(guia,details,parsed);if(downloadUrl)URL.revokeObjectURL(downloadUrl);downloadUrl=URL.createObjectURL(new Blob([result],{type:'application/pdf'}));const safeName=normalize(details.paciente).replace(/\s+/g,'_').slice(0,70)||'beneficiario';$('download').href=downloadUrl;$('download').download=`Guia_SADT_${safeName}.pdf`;$('download').hidden=false;status('status-final',`PDF gerado: ${Math.ceil(parsed.length/5)} página(s) e ${parsed.length} exame(s). Confira o arquivo antes do envio à operadora. A emissão não equivale à autorização.`, 'success');$('download').scrollIntoView({behavior:'smooth',block:'center'})}catch(ex){console.error(ex);status('status-final','Erro ao gerar PDF: '+ex.message,'error')}finally{setBusy(false)}});
+$('limpar').addEventListener('click',()=>{if(!confirm('Limpar os documentos e todos os dados preenchidos nesta página?'))return;for(const k of ['pedido','cartao','guia','carteira','validade','paciente','medico','registro','uf','data','cid','nome-cartao','plano','cns'])$(k).value='';$('conselho').value='CRM';rows=[];nameFromCard='';orderName='';renderRows();status('status-arquivos','Envie os três arquivos para iniciar.');status('status-codigos','Códigos ausentes devem ser informados antes de gerar a guia.');status('status-final','Nenhuma guia gerada ainda.');$('download').hidden=true;if(downloadUrl){URL.revokeObjectURL(downloadUrl);downloadUrl=null}});
+function renderCatalog(query=''){const n=normalize(query);const el=$('catalogo');el.replaceChildren();for(const [code,desc,aliases] of CATALOGO){if(n&&!normalize(code+' '+desc+' '+aliases).includes(n))continue;const a=document.createElement('div'),b=document.createElement('div');a.className='c-code';a.textContent=code;b.textContent=desc;el.append(a,b)}}
+$('buscar-catalogo').addEventListener('input',e=>renderCatalog(e.target.value));renderCatalog();
+const dl=document.createElement('datalist');dl.id='codes-options';for(const [c,d] of CATALOGO){const op=document.createElement('option');op.value=c;op.label=d;dl.appendChild(op)}document.body.appendChild(dl);
+window.addEventListener('beforeunload',()=>{if(downloadUrl)URL.revokeObjectURL(downloadUrl);if(ocrWorker)ocrWorker.terminate()});
+// Disponível para testes automatizados locais sem expor dados.
+window.SADT={normalize,code8,findExams,matchExam,getOrderMeta,getCard,validateRows,exportPdf,inspectGuide,updateGuideLabels,get guideModel(){return guideModel},get rows(){return rows},setRows:r=>{rows=r;renderRows()}};
+</script>
+<script>
+/* AUT-CORE-START */
+// ===== Núcleo de leitura da guia SP/SADT autorizada (compartilhado entre o site e os testes) =====
+const AUT={};
+(function(){
+const norm=v=>String(v??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
+AUT.norm=norm;
+AUT.PLANOS=[
+  {id:'tjdft',nome:'TJDFT · Pró-Saúde',re:/\bt[ij1l|]?d{1,2}f[t7]\b|tribunal de justica/},
+  {id:'camara',nome:'Câmara dos Deputados · Pró-Saúde',re:/camara dos deputados/},
+  {id:'senado',nome:'Senado Federal · SIS',re:/senado federal|sistema integrado de saude/},
+  {id:'stf',nome:'STF-Med',re:/\bstf\b|stf ?med|supremo/},
+  {id:'trt',nome:'TRT-10 · Pró-Social',re:/\btrt\b|trabalho|pro ?socia/},
+  {id:'tre',nome:'TRE-DF · Saúde',re:/\btre ?df\b|eleitoral/},
+  {id:'fascal',nome:'Fascal (CLDF)',re:/fascal|camara legislativa/},
+  {id:'bacen',nome:'Banco Central · PASBC',re:/pasbc|banco central|banco centr|\bbacen\b/},
+  {id:'gdf',nome:'GDF Saúde · INAS',re:/\bgdf\b|\binas\b/},
+  {id:'pfsaude',nome:'PF Saúde',re:/\bpf ?saude\b|policia federal/},
+  {id:'casec',nome:'CASEC (Codevasf)',re:/casec|codevasf|41 ?229/},
+  {id:'saudecaixa',nome:'Saúde Caixa',re:/saude ?caixa|caixa economica|^caixa$|\bcaixa\b/}
+];
+// Registro ANS impresso no campo 1 (só os que identificam o convênio sem ambiguidade)
+AUT.ANS={'312924':'saudecaixa','412295':'casec'};
+AUT.ansPlan=a=>{a=String(a||'');return AUT.ANS[a]||AUT.ANS[a.slice(0,6)+a.slice(-1)]||AUT.ANS[a.slice(1)]||AUT.ANS[a.slice(1,7)]||''};
+AUT.detectPlan=function(text){
+  const n=norm(text);
+  for(const p of AUT.PLANOS)if(p.re.test(n))return p.id;
+  return '';
+};
+// Corrige confusões típicas do OCR em campos numéricos.
+const DIGIT_FIX={o:'0',O:'0',Q:'0',D:'0',s:'5',S:'5',l:'1',I:'1','|':'1',i:'1',L:'1',B:'8',g:'9',z:'2',Z:'2'};
+AUT.fixDigits=t=>String(t).replace(/[oOQDsSlI|iLBgzZ]/g,c=>DIGIT_FIX[c]);
+AUT.similarity=function(a,b){
+  const stop=new Set(['e','ou','de','do','da','dos','das','pesquisa','dosagem','exames','exame','a','o','em','com','no','na']);
+  const A=norm(a).split(' ').filter(w=>w&&!stop.has(w)),B=new Set(norm(b).split(' ').filter(w=>w&&!stop.has(w)));
+  if(!A.length||!B.size)return 0;
+  let hit=0;for(const w of A)if(B.has(w)||[...B].some(x=>x.length>3&&w.length>3&&(x.startsWith(w.slice(0,4))&&Math.abs(x.length-w.length)<=2)))hit++;
+  return hit/Math.max(A.length,B.size);
+};
+function lev1(a,b){ // distância de edição ≤1 entre strings de mesmo tamanho (substituição)
+  if(a.length!==b.length)return false;let d=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i]&&++d>1)return false;return true;
+}
+// Confirma/corrige o código lido usando a descrição impressa ao lado.
+AUT.descKey=d=>norm(String(d||'').replace(/[A-Za-zÀ-ÿ]{11,}/g,w=>w.replace(/([a-zà-ÿ])([A-ZÀ-Ý])/g,'$1 $2'))).replace(/\b(pesquisa|e|ou|dosagem|exames?|sadt|patologia|clinica|determinacao|de|da|do|no|na|nos|nas)\b/g,' ').replace(/\s+/g,' ').trim();
+let DESC_INDEX=null;
+function levLE1(a,b){if(a===b)return true;if(Math.abs(a.length-b.length)>1)return false;let i=0,j=0,d=0;
+  while(i<a.length&&j<b.length){if(a[i]===b[j]){i++;j++;continue}if(++d>1)return false;if(a.length>b.length)i++;else if(b.length>a.length)j++;else{i++;j++}}
+  return d+(a.length-i)+(b.length-j)<=1}
+// Acha o código pela descrição impressa: quantas palavras da descrição TUSS aparecem no texto lido
+// (o lixo do OCR ao redor não atrapalha). Exige resultado único e com folga sobre o 2º colocado.
+AUT.codeByDesc=function(descOcr,DESC,planVals){
+  if(!DESC_INDEX||DESC_INDEX.src!==DESC){DESC_INDEX={src:DESC,list:Object.entries(DESC).map(([c,d])=>[c,AUT.descKey(d).split(' ').filter(Boolean)])}}
+  const k=AUT.descKey(descOcr).split(' ').filter(Boolean);if(!k.length)return null;
+  const has=t=>k.some(w=>w===t||(t.length>=5&&w.length>=4&&levLE1(w,t)));
+  let cands=[];
+  for(const [c,toks] of DESC_INDEX.list){
+    if(!toks.length||(planVals&&!planVals[c])||(!planVals&&!/^[1-4]/.test(c)))continue;
+    const hit=toks.filter(has).length;if(!hit)continue;
+    const rec=hit/toks.length;if(rec<0.75)continue;
+    // precisão: palavras "reais" (≥4 letras) do texto lido que não estão na descrição
+    const extra=k.filter(w=>w.length>=4&&/^[a-z0-9]+$/.test(w)&&!toks.some(t=>t===w||(t.length>=5&&levLE1(w,t)))).length;
+    cands.push({c,rec,n:hit,extra});
+  }
+  if(!cands.length)return null;
+  cands.sort((x,y)=>y.rec-x.rec||y.n-x.n||x.extra-y.extra);
+  const b=cands[0],s2=cands[1];
+  if(s2&&s2.rec===b.rec&&s2.n===b.n&&s2.extra===b.extra){
+    const lab=cands.filter(x=>x.rec===b.rec&&x.n===b.n&&x.extra===b.extra&&x.c.startsWith('403'));
+    if(lab.length!==1)return null;return{code:lab[0].c,score:b.rec};
+  }
+  return{code:b.c,score:b.rec};
+};
+function editDist(a,b){const m=a.length,n=b.length;const d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n]}
+// Código e descrição lidos com erros: combina os dois (dígitos parecidos + palavras da descrição)
+AUT.jointMatch=function(digits,descOcr,DESC){
+  if(!digits||digits.length<6||!descOcr)return null;
+  if(!DESC_INDEX||DESC_INDEX.src!==DESC)AUT.codeByDesc('x',DESC,null);
+  const k=AUT.descKey(descOcr).split(' ').filter(Boolean);if(!k.length)return null;
+  const k2=k.concat(k.slice(1).map((w,i)=>k[i]+w)); // palavras partidas pelo OCR ("fos oro")
+  const has=t=>k2.some(w=>w===t||(t.length>=4&&w.length>=4&&(levLE1(w,t)||(t.length>=7&&editDist(w,t)<=Math.floor(t.length*0.2))||(Math.min(w.length,t.length)>=5&&(t.startsWith(w)||w.startsWith(t)))))||(t.length>=2&&t.length<=3&&w.length>=1&&t.endsWith(w)&&/\d/.test(t)));
+  let best=null,bs=-9,second=-9;
+  for(const [c,toks] of DESC_INDEX.list){
+    if(!toks.length||!/^[1-4]/.test(c))continue;const dd=editDist(digits,c);if(dd>3)continue;
+    const rec=toks.filter(has).length/toks.length;if(rec<(dd<=2?0.3:0.5))continue;
+    const sc=rec-0.12*dd;if(sc>bs){second=bs;bs=sc;best=c}else if(sc>second)second=sc;
+  }
+  return best&&bs>=0.2&&bs-second>=0.1?best:null;
+};
+AUT.resolveCode=function(raw,descOcr,DESC,planVals){
+  if(!String(raw||'').replace(/\D/g,'')){const r=AUT.codeByDesc(descOcr,DESC,planVals);return r?{code:r.code,ok:true,fixed:true,from:'descrição'}:{code:'',ok:false,fixed:false}}
+  let code=AUT.fixDigits(raw).replace(/\D/g,'');
+  if(code.length===9){ // um dígito a mais (borda/ruído): testa tirar cada posição e fica com a que bate com a descrição
+    const cands=[...new Set([...Array(9)].map((_,i)=>code.slice(0,i)+code.slice(i+1)))].filter(c=>DESC[c]);
+    cands.sort((a,b)=>(descOcr?AUT.similarity(descOcr,DESC[b])-AUT.similarity(descOcr,DESC[a]):0));
+    code=cands[0]||code.slice(1);
+  }
+  const known=c=>(planVals&&planVals[c])||DESC[c];
+  const sim=c=>DESC[c]?AUT.similarity(descOcr,DESC[c]):0;
+  if(code.length===8&&known(code)&&(!descOcr||sim(code)>=0.34||norm(descOcr).length<6))return{code,ok:true,fixed:false};
+  // procura códigos a uma substituição de distância cuja descrição bata melhor
+  let best=null,bs=0,nb=0;
+  if(code.length===8&&descOcr){for(const c of Object.keys(DESC)){if(!lev1(c,code))continue;nb++;const s=sim(c);if(s>bs){bs=s;best=c}}}
+  if(best&&bs>=0.5&&(!known(code)||bs>sim(code)+0.2))return{code:best,ok:true,fixed:true,from:code};
+  if(best&&nb===1&&!known(code)&&bs>=0.2)return{code:best,ok:true,fixed:true,from:code}; // único código válido a 1 dígito de distância
+  return{code,ok:!!known(code),fixed:false,lowMatch:!!known(code)};
+};
+// ---------- análise da página ----------
+function linesOf(data){
+  const out=[];
+  for(const b of data.blocks||[])for(const p of b.paragraphs||[])for(const l of p.lines||[])out.push({text:(l.text||'').replace(/\n/g,' ').trim(),bbox:l.bbox,words:l.words||[]});
+  out.sort((a,b)=>a.bbox.y0-b.bbox.y0);return out;
+}
+AUT.linesOf=linesOf;
+// Lê os dados de uma página a partir das linhas do OCR. Não depende do canvas.
+AUT.parsePage=function(lines){
+  const full=lines.map(l=>l.text).join('\n');
+  const r={guiaPrestador:'',guiaOperadora:'',senha:'',dataAut:'',paciente:'',carteira:'',items:[],headerTabela:null,isGuide:/sp ?sadt|servico auxiliar|guia de servico/.test(norm(full))};
+  // nº no prestador pode ter até 20 dígitos (ex.: FacPlan); "(" e ")" costumam ser "0" lidos errado
+  let m=full.match(/Guia\s*n?[oº°]?\s*(?:no\s*)?Prestador\s*:?\s*([0-9OoSlI|()]{4,24})/i)||full.match(/Prestador\s*:?\s*([0-9OoSlI|()]{5,24})/i);
+  if(m)r.guiaPrestador=AUT.fixDigits(m[1].replace(/\(\)/g,'0').replace(/[()]/g,'0')).replace(/\D/g,'');
+  {const sm=full.match(/Senha\s*[—\-:|]*\s*([0-9]{6,14})\b/i);if(sm)r.senha=sm[1]}
+  const ans=full.match(/\b(\d{5,6})\s?-\s?(\d)\b/);if(ans)r.ans=ans[1]+ans[2];
+  // linha de valores dos campos 4 (data autorização), 5 (senha), 6 (validade senha) e 7 (guia operadora):
+  // é a primeira linha do cabeçalho com duas datas
+  for(const l of lines.slice(0,Math.min(lines.length,14))){
+    const t=l.text;const dates=t.match(/\b\d{2}\/\d{2}\/\d{4}\b/g)||[];
+    if(dates.length<2||/validade da carteira|nascimento/i.test(t))continue;
+    if(/^\D*\d{10,}\D+\d{2}\/\d{2}\/\d{4}\s+[A-Za-zÀ-ÿ]/.test(t))continue; // linha do beneficiário
+    r.dataAut=dates[0];
+    const mid=t.split(dates[0])[1].split(dates[1])[0]||'';const s=mid.match(/[0-9OoSlI]{6,14}/);if(s)r.senha=AUT.fixDigits(s[0]).replace(/\D/g,'');
+    const tail=t.split(dates[1])[1]||'';const g=tail.match(/[\[|(]?\s*([0-9OoSlI]{5,14})\s*\W*$/);
+    if(g)r.guiaOperadora=AUT.fixDigits(g[1]).replace(/\D/g,'');
+    break;
+  }
+  // beneficiário: (a) linha com nº da carteira + validade + nome; (b) linha logo abaixo do rótulo "10 - Nome"
+  const cleanName=s=>{let nome=String(s).replace(/[^A-Za-zÀ-ÿ' .\-]/g,' ').replace(/\s+/g,' ').trim().split(' ');
+    while(nome.length>2&&(nome[nome.length-1].length<=2||/^(do|n|s|sim|nao)$/i.test(nome[nome.length-1])))nome.pop();
+    while(nome.length>2&&nome[0].length<=1)nome.shift();
+    const out=nome.join(' ').toUpperCase().trim();
+    return /(DADOS|CONTRATAN|CONTRATADO|BENEFICI|SOLICITANTE|CARTEIRA|NOME SOCIAL|OPERADORA|PROFISSIONAL)/.test(out)?'':out};
+  for(const l of lines){
+    const mm=l.text.match(/([0-9OoSlI|]{10,22})\D{0,4}(\d{2}\/\d{2}\/\d{4})\s+(?:\[?B?\d*\s*)?([A-Za-zÀ-ÿ'][A-Za-zÀ-ÿ' .\-]{4,})/);
+    if(mm){r.carteira=AUT.fixDigits(mm[1]).replace(/\D/g,'');r.paciente=cleanName(mm[3]);break}
+  }
+  if(!r.paciente){
+    const ni=lines.findIndex(l=>/(^|\s)1[0o]\s*[-–.]?\s*nome\b/i.test(norm(l.text))&&!/social|contratado|profissional/.test(norm(l.text)));
+    if(ni>=0)for(const l of lines.slice(ni+1,ni+3)){const t=l.text.trim();
+      if(/^[A-Za-zÀ-ÿ' .\-|\[\]]{6,}$/.test(t)&&t.replace(/[^A-Za-zÀ-ÿ]/g,'').length>=6){r.paciente=cleanName(t);break}}
+  }
+  if(!r.carteira){const c=full.match(/carteira[^\n]*\n[^\n]*?\b([0-9]{10,22})\b/i);if(c)r.carteira=c[1]}
+  Object.assign(r,AUT.parseItems(lines));
+  return r;
+};
+// Procedimentos (campos 24 a 28): linhas "22  40316572  Descrição ... 1 1".
+// O código pode vir com pontos (4.03.16.572 / 40.31.657-2) conforme a operadora.
+AUT.parseItems=function(lines){
+  const items=[];let headerTabela=null,endLine=null;
+  const th=lines.findIndex(l=>/(tabela|codigo do procedimento)/.test(norm(l.text))&&/(procedimento|descricao|qtde|qt )/.test(norm(l.text)));
+  const start=lines.findIndex(l=>/procedimentos ou|itens assistenciais|dados da solicita/.test(norm(l.text)));
+  const CODE='([0-9OoSsIlB|]{1,4}(?:[ .,:]{0,2}[0-9OoSsIlB|]{1,3}){2,4}(?:\\s?[-–]\\s?[0-9OoSsIlB])?)';
+  const reTab=new RegExp('(?:^|[\\s|\\[])(?:2{2}|z2|2z|Z2)\\s*[—–\\-|]?\\s+'+CODE+'(?=\\s|$)\\s*(.*)$');
+  for(const l of lines.slice(start>=0?start:0)){
+    const n=norm(l.text);
+    if(/contratado executante|codigo na operadora|nome do contratado|codigo cnes|cod cnes|dados do atendimento|tipo de atendimento|dados da execu|hora inicial|indicacao de acidente/.test(n)&&(items.length||l.bbox.y0>(lines[th]?.bbox.y0??-1))){if(items.length){endLine=l;break}}
+    let mm=l.text.match(reTab);
+    if(!mm)mm=l.text.match(/(?:^|\s)(\d[.,]{1,2}\d{2}[.,]{1,2}\d{2}[.,]{1,2}\d{3}|\d{2}\.\d{2}\.\d{3}-\d|[0-9][0-9OoSsIlB]{7})(?=\s)\s*(.*)$/);
+    if(!mm){
+      // código ilegível, mas a descrição TUSS está lá: guarda para identificar o código pela descrição
+      const dm=(th>=0||start>=0)&&l.text.match(/([A-ZÀ-Ýa-zà-ÿ0-9][^|]{2,}?(?:pesquisa e\/?ou dosagem|dosagem|determina[çc][ãa]o|contagem|pesquisa de|anticorpos?)[^|]*)/i);
+      if(dm&&!/descri[çc][ãa]o|qtde|tabela|c[óo]digo do proced/i.test(l.text)){
+        let desc=dm[1].replace(/\s*[-/]\s*EXAMES?.*$/i,'').replace(/\s*-\s*$/,'').replace(/[.\-_]{3,}.*$/,'').trim();
+        // remove lixo antes da descrição (sequência + tabela + código ilegível)
+        desc=desc.replace(/^.*?\s(?=[A-ZÀ-Ý][A-ZÀ-Ýa-zà-ÿ0-9\-]{2,}(?:\s|,|\())/, m=>/[A-Za-zÀ-ÿ]{4,}/.test(m)&&!/[^A-Za-zÀ-ÿ\s]{3,}/.test(m)?m:'');
+        if(desc.length>=4)items.push({raw:'',code:'',desc,qs:'',qa:'',line:l.text,bbox:l.bbox,words:l.words,descOnly:true});
+      }
+      continue;
+    }
+    const code=AUT.fixDigits(mm[1]).replace(/\D/g,'');
+    if(code.length!==8&&code.length!==9)continue; // 9 = borda do campo lida como dígito; resolvido depois pela tabela
+    if(!/[A-Za-zÀ-ÿ]{3}/.test(mm[2]||''))continue; // precisa ter descrição ao lado
+    let desc=mm[2]||'';const q=desc.match(/\s+(\d{1,3})\s*[^\w]*\s+(\d{1,3})\s*[^\w]*$/);
+    let qs='',qa='';if(q){qs=q[1];qa=q[2];desc=desc.slice(0,q.index)}
+    else{const q1=desc.match(/\s+(\d{1,3})\s*[^\wÀ-ÿ]*$/);if(q1&&!/\d{4,}/.test(desc.slice(-6))){qs=q1[1];desc=desc.slice(0,q1.index)}}
+    desc=desc.replace(/^[—–\-|\s]+/,'').replace(/\s*[-/]\s*EXAMES?(\s+SADT)?.*$/i,'').replace(/[|_—\-.'"\s:]+$/,'').trim();
+    const pre=l.text.slice(0,Math.max(0,l.text.indexOf(mm[1])));const sq=pre.match(/^\W*(\d{1,3})\s+\S{1,3}\W*$/);
+    items.push({raw:mm[1],code,desc,qs,qa,line:l.text,bbox:l.bbox,words:l.words,seq:sq?+sq[1]:null});
+  }
+  // cabeçalho da tabela (para achar as colunas 27/28): linha acima do 1º item que cite "Solic"/"Autoriz"
+  if(items.length){
+    const fi=lines.findIndex(l=>l.text===items[0].line);
+    for(let k=fi-1;k>=Math.max(0,fi-4);k--){if((lines[k].words||[]).some(w=>/aut/i.test(w.text))){headerTabela=lines[k];break}}
+  }
+  if(!headerTabela&&th>=0)headerTabela=lines[th];
+  const solic=lines.find(l=>/dados da solicita|procedimentos ou itens/.test(norm(l.text)));
+  if(!endLine)endLine=lines.find(l=>/contratado executante|codigo na operadora|nome do contratado|codigo cnes|cod cnes|dados do atendimento|tipo de atendimento|dados da execu|hora inicial|indicacao de acidente/.test(norm(l.text))&&l.bbox.y0>((th>=0?lines[th]:solic)?.bbox.y0??1e9))||null;
+  return{items,headerTabela,colsHeader:th>=0?lines[th]:null,endLine,startLine:solic||null};
+};
+// nome mais frequente; entre os mais votados, o mais completo
+AUT.bestName=function(arr){const c=new Map();for(const v of arr)if(v&&v.split(' ').length>=2)c.set(v,(c.get(v)||0)+1);
+  let best='',n=0;for(const [k,v] of c){const sc=v*10+k.split(' ').length;if(sc>n){best=k;n=sc}}return best||AUT.mode(arr)};
+AUT.mode=function(arr){const c=new Map();for(const v of arr)if(v)c.set(v,(c.get(v)||0)+1);let best='',n=0;for(const [k,v] of c)if(v>n){best=k;n=v}return best};
+
+// ---------- consolidação das páginas em guias ----------
+// Quantidade: exames quase sempre vêm com 1, e o OCR de um "1" isolado erra fácil (vira 7, 11, |1|).
+// Só aceita valor maior que 1 quando as duas leituras (célula e linha) concordam; senão usa 1 e marca para conferir.
+AUT.pickQty=function(it){
+  const ok=v=>/^\d{1,3}$/.test(v||'')&&+v>0&&+v<100;
+  const c=ok(it.qaCell)?+it.qaCell:null,l=ok(it.qa)?+it.qa:null;
+  if(c===1)return{q:1,sure:true};
+  if(c==null&&l===1)return{q:1,sure:false};
+  if(c!=null&&l!=null&&c===l)return{q:c,sure:false,read:String(c),agree:true};
+  if(c==null&&l==null)return{q:1,sure:false};
+  return{q:1,sure:false,read:String(c??l)};
+};
+AUT.buildGuides=function(pages,DATA){
+  const groups=[];let cur=null;
+  const keyOf=p=>p.guiaPrestador||'';
+  pages.forEach((p,idx)=>{
+    if(!p.isGuide&&!p.items.length)return;
+    const k=keyOf(p);
+    // só separa por número de guia quando os dois números são parecidos com números de guia de verdade e bem diferentes
+    const sameName=cur&&p.paciente&&cur.nomes.length&&AUT.similarity(p.paciente,AUT.bestName(cur.nomes))>=0.6;
+    const differentKey=cur&&k&&k.length>=6&&cur.keys.size&&!sameName&&![...cur.keys].some(x=>x===k||x.includes(k)||k.includes(x)||editDist(x,k)<=Math.max(2,Math.floor(Math.max(x.length,k.length)*0.25)));
+    // nome só separa guias quando não há número de guia para comparar (o OCR do nome varia entre páginas)
+    const differentName=cur&&!k&&!cur.keys.size&&p.paciente&&p.paciente.split(' ').length>=3&&cur.nomes.length&&AUT.similarity(p.paciente,AUT.bestName(cur.nomes))<0.25;
+    if(!cur||differentKey||differentName){cur={pages:[],keys:new Set(),nomes:[],raw:[]};groups.push(cur)}
+    if(k&&k.length>=6)cur.keys.add(k);if(p.paciente)cur.nomes.push(p.paciente);
+    cur.pages.push(idx+1);cur.raw.push(p);
+  });
+  return groups.map(g=>{
+    const R=g.raw,pick=f=>AUT.mode(R.map(f));
+    // o OCR às vezes lê a borda "[" do campo como "1" no início do número
+    const unbracket=arr=>{arr=arr.filter(Boolean);return arr.map(o=>(o[0]==='1'&&arr.includes(o.slice(1)))?o.slice(1):o)};
+    let ops=unbracket(R.map(p=>p.guiaOperadora));
+    ops=ops.map(o=>(o.length===9&&o[0]==='1'&&R.some(p=>(p.senha||'').replace(/^1/,'').startsWith(o.slice(1))))?o.slice(1):o);
+    const items=[];
+    const planVals=DATA.vals[pick(p=>p.plano)]||null;
+    let ignored=0;
+    for(const [pi,p] of R.entries()){const pn=pi,seen=new Set();for(const it of p.items){
+      // 1) código lido confere com a descrição → usa; 2) senão, código pela descrição; 3) senão, código lido (marcado)
+      let res=AUT.resolveCode(it.code,it.desc,DATA.desc,null);
+      // código lido e existente na tabela prevalece (a descrição pode ter vindo da linha vizinha);
+      // a descrição só decide quando o código não foi lido ou não existe
+      if(res.ok&&res.code&&it.desc&&DATA.desc[res.code]&&AUT.similarity(AUT.descKey(it.desc),AUT.descKey(DATA.desc[res.code]))<0.15){
+        const bd=AUT.codeByDesc(it.desc,DATA.desc,planVals)||AUT.codeByDesc(it.desc,DATA.desc,null);
+        if(bd&&bd.score===1&&bd.code!==res.code&&editDist(bd.code,res.code)<=2)res={code:bd.code,ok:true,fixed:true,from:res.code+' (descrição)'};
+      }
+      if(!res.ok||!res.code){
+        const jm=AUT.jointMatch(String(it.code||'').replace(/\D/g,''),it.desc,DATA.desc);
+        const bd=jm?{code:jm}:it.desc?AUT.codeByDesc(it.desc,DATA.desc,planVals)||AUT.codeByDesc(it.desc,DATA.desc,null):null;
+        if(bd)res={code:bd.code,ok:true,fixed:true,from:res.code&&res.code.length>=6?res.code+' (descrição)':'descrição'};
+      }
+      if(!res.code||(!res.ok&&(it.descOnly||!/pesquisa|dosagem|exame|contagem|anticorp|determina|hormon|sangue|urina/i.test(it.desc||'')))){ignored++;continue}
+      if(seen.has(res.code))continue;seen.add(res.code); // mesma linha lida duas vezes na página
+      // código inválido cuja descrição é a de um exame já reconhecido nesta página: é a mesma linha lida de novo
+      if(!res.ok&&items.some(o=>o.page===pn&&DATA.desc[o.code]&&AUT.similarity(AUT.descKey(it.desc),AUT.descKey(DATA.desc[o.code]))>=0.5)){ignored++;continue}
+      const qt=AUT.pickQty(it);
+      items.push({page:pn,code:res.code,descOcr:it.desc,codeOk:res.ok,fixedFrom:res.fixed?res.from:'',qa:qt.q,qtySure:qt.sure,qtyRead:qt.read||'',line:it.line});
+    }}
+    const seqs=R.flatMap(p=>(p.items||[]).map(i=>i.seq)).filter(v=>v&&v<=300);
+    return{seqMax:seqs.length>=2?Math.max(...seqs):0,pages:g.pages,plano:pick(p=>p.plano),paciente:AUT.bestName(R.map(p=>p.paciente.replace(/^[I|l1]\s?(?=[A-Z]{3})/,''))),carteira:pick(p=>p.carteira.length>16?p.carteira.slice(1):p.carteira),
+      ignoradas:ignored,guiaPrestador:pick(p=>p.guiaPrestador),guiaOperadora:AUT.mode(ops),senha:AUT.mode(unbracket(R.map(p=>p.senha))),dataAut:pick(p=>p.dataAut),items};
+  });
+};
+})();
+// ---------- parte que usa canvas + Tesseract (navegador ou Node) ----------
+// env = { make:(w,h)=>canvas, img:canvas=>imagem aceita pelo Tesseract }
+// remove componentes ligados que não podem ser algarismo: largos e baixos (linhas, colchetes "|_ _|" das caixas)
+AUT._dropWide=function(p,cw,ch){
+  const lab=new Uint8Array(cw*ch);const st=[];
+  for(let i=0;i<cw*ch;i++){if(lab[i]||p[i*4]!==0)continue;let x0=1e9,x1=-1,y0=1e9,y1=-1;const px=[];st.push(i);lab[i]=1;
+    while(st.length){const q=st.pop();px.push(q);const qy=(q/cw)|0,qx=q-qy*cw;if(qx<x0)x0=qx;if(qx>x1)x1=qx;if(qy<y0)y0=qy;if(qy>y1)y1=qy;
+      for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const nx=qx+dx,ny=qy+dy;if(nx<0||ny<0||nx>=cw||ny>=ch)continue;const n=ny*cw+nx;if(!lab[n]&&p[n*4]===0){lab[n]=1;st.push(n)}}}
+    const w=x1-x0+1,h=y1-y0+1;
+    if((w>h*1.8&&w>20)||h>ch*0.8)for(const q of px){p[q*4]=p[q*4+1]=p[q*4+2]=255}}
+};
+AUT._dropSmall=function(p,cw,ch,ratio){
+  const lab=new Int32Array(cw*ch);const comps=[];let id=0;const st=[];
+  for(let i=0;i<cw*ch;i++){if(lab[i]||p[i*4]!==0)continue;id++;let y0c=1e9,y1c=-1;const px=[];st.push(i);lab[i]=id;
+    while(st.length){const q=st.pop();px.push(q);const qy=(q/cw)|0,qx=q-qy*cw;if(qy<y0c)y0c=qy;if(qy>y1c)y1c=qy;
+      for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){if(!dx&&!dy)continue;const nx=qx+dx,ny=qy+dy;if(nx<0||ny<0||nx>=cw||ny>=ch)continue;const n=ny*cw+nx;if(!lab[n]&&p[n*4]===0){lab[n]=id;st.push(n)}}}
+    comps.push({h:y1c-y0c+1,px})}
+  const hs=comps.map(c=>c.h).sort((a,b)=>b-a);const ref=hs[Math.min(hs.length-1,Math.floor(hs.length*0.1))]||0; // ~ altura das letras maiores
+  for(const c of comps)if(c.h<ref*ratio)for(const q of c.px){p[q*4]=p[q*4+1]=p[q*4+2]=255}
+};
+// Endireita a página: testa inclinações de -2° a +2° e fica com a que deixa as linhas de texto/tabela
+// mais "horizontais" (maior contraste no perfil horizontal de tinta).
+AUT.deskew=function(canvas,env){
+  const W=canvas.width,H=canvas.height,sw=900,k=sw/W,sh=Math.round(H*k);
+  const sm=env.make(sw,sh);const g=sm.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,sw,sh);g.drawImage(canvas,0,0,sw,sh);
+  const d=g.getImageData(0,0,sw,sh).data;const xs=[],ys=[];
+  for(let y=0;y<sh;y++)for(let x=0;x<sw;x++){const i=(y*sw+x)*4;if(d[i]*.3+d[i+1]*.59+d[i+2]*.11<128){xs.push(x-sw/2);ys.push(y)}}
+  if(xs.length<500)return{canvas,angle:0};
+  let best=0,bv=-1;const hist=new Float64Array(sh+400);
+  for(let a=-2;a<=2.0001;a+=0.05){const t=Math.tan(a*Math.PI/180);hist.fill(0);
+    for(let i=0;i<xs.length;i++){const r=Math.round(ys[i]-xs[i]*t)+200;if(r>=0&&r<hist.length)hist[r]++}
+    let v=0;for(let i=0;i<hist.length;i++)v+=hist[i]*hist[i];if(v>bv){bv=v;best=a}}
+  if(Math.abs(best)<0.2)return{canvas,angle:best};
+  const out=env.make(W,H);const o=out.getContext('2d');o.fillStyle='#fff';o.fillRect(0,0,W,H);
+  o.imageSmoothingEnabled=true;o.imageSmoothingQuality='high';o.translate(W/2,H/2);o.rotate(-best*Math.PI/180);o.drawImage(canvas,-W/2,-H/2);
+  return{canvas:out,angle:best};
+};
+// página reduzida a 400 px de largura, em tons de cinza (para comparar logotipos)
+AUT.smallGray=function(canvas,env){
+  const w=400,h=Math.round(canvas.height*400/canvas.width);const c=env.make(w,h);const g=c.getContext('2d');
+  g.fillStyle='#fff';g.fillRect(0,0,w,h);g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';g.drawImage(canvas,0,0,w,h);
+  const d=g.getImageData(0,0,w,h).data;const out=new Uint8Array(w*h);for(let i=0;i<w*h;i++)out[i]=Math.round(d[i*4]*.3+d[i*4+1]*.59+d[i*4+2]*.11);
+  return{w,h,g:out};
+};
+// Reconhece o convênio pelo logotipo: correlação normalizada com os modelos de cada operadora,
+// procurando no canto superior esquerdo da guia (tolerante a deslocamento da digitalização).
+// modelos extraídos das guias de exemplo (escala de 400 px); para um convênio novo, gerar a partir de uma guia dele
+AUT.LOGOS=[{"plano":"fascal","w":30,"h":12,"x":16,"y":9,"d":"/////////vTw/f/////////////////////////////////+67674Pr+////////////////////////////+Ne6w+ruxrTV+f/Mwuq/1d3I5dXb5dPJ7tH/////8sOZsujwvZO97v/K2tjEv9XSxL7g3bjGyLjk/////fz77OPo4Pj8/v/9/fz9/f7+/v39/f39/f79////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////39LR0tTU5trd3dza29rd3t3e3t/d3eDg4ODk4+XmhcG+vbm1uK61s7S4tra4tbW2s7Ows7S0tLa5s7Os"},{"plano":"bacen","w":81,"h":17,"x":19,"y":11,"d":"66nt7e7v8PLz8/P08/Tz8/T09PP09PT09PP08/Pz8/Pz9PPy8PDw8e/v7+/t8e7u7ezs7O/u7u7v8fDw8vHx8fHx8fPy8vLy8/Lx8vLz8vLx+7D+///////+///+/v////////////////////////////7+/////////////v/////////////////+/v///////v///////v///////////rL+/////////////////////////////////////////////////////////////////////////////////////////////////////////rz+/////////////////////////////////////////////////////////////////////////////////////////////////////////rb+/////////////Pv9/////////////////////////////////////////////////////////////////////////////////////////rf+///////+/fnUyNz7//7rzvz+///+/fb09/v9+/n7/vr5/Pn3+/n5+fz6+Pn6/f39+vj4+/r6+fr4+v35+vf4+fv5+fr8/fn2+v77+v3//rH+/////v76vIAxkt3b7PtuaNXX3fz98EN3S5vyeH5y735ehax2on+9ubV0rqNt5/qgg7e2zUdzfsVIYcBPv6lFqNNDg2Wu9Xd8Zuyfafr8/rr+///+8JPL7N66u77G9P3Ourq65/z+9Ii3n7WvrNGesK3Azpaww5PEz86Xz8CX8vfKpcDN04TBz92J4JSR4uqM5u2G2KfEwqvPsKbCntPd/a/+///+2C6o6t5vsPv7/fudgvr7+PH4+NDO0Nvz5czQ5Pr679fV3PLc19vp+vPa5Pr32czf6uHs1fr8/v7+//7+/v7+/v7+/v7+//7+/v/+/rX+///+6JOYaEQ/ZJSb2ft8YoeSzOD781HDxlyiXb7bXrn5vVufa89khXGT95aPXsTHa42vqGW2Z/f7/v///////////////////////////rX9/////v77wYyGOJPr8vLppqjq/f/9+Ju0sbbrsLG1qPX70pjCodWf38mtzanZv5rStq+nxqjToMLJ/P3//////////////////////////b3+//////////z1o5ybpqvV+v////////////////////////////////39/////////////////////////////////////////////////tH+/////////////v39/v7+/v///////////////////////////////////////////////////////////////////////////////////cf9///////////+/////////////////////////////////////////////////////////////////////////////////////////////cD9/////////////////////////////////////////////////////////////////////////////////////////////////////////b7+/////////////////////////////////////////////////////////////////////////////////////////////////////////rX9/v79/f79/P39/f39/f39/fz9/f39/f39/f39/f3+/f3+/f7+/f7+/v7+/v39/f7+/v39/f39/f3+/f39/v3+/v39/v3+/v39/f7+/f39"},{"plano":"pfsaude","w":12,"h":9,"x":17,"y":7,"d":"//////77/Pn5/Pz//vz8+vn03cynwPP//ICHjqLa8ON6mNT/+lmCZaDj8aBGU7v/+ILpeNrW4uCDtND/+GWXQpaObW1jsMb79o+Ojqd5lYSXpeDt/ff4+Pb25NHY3Pb7///+/v/+/vz6/v7/"},{"plano":"gdf","w":20,"h":12,"x":53,"y":12,"d":"/v38/Pz+/fz7/Pz8/f38/Pv9/P370JOYoMezure2o5KZlJyanJ6k9PqOLzg+ll93dnVKPD06QzxCQVPm+4I2Q0eOYXdyd0tMYUpaSlVjUuX8qFFHSZdofHl0VpSui7SPtKhb6v3No4p7mmdxa1lNjZ2hqKysZFfl+7tsY2Nki4x0VkNbZ1x4Z3xcVOb7t3p7dVx0SUQ9TIeHd2x6kaBe6vmxdnF3XG1ES0JGUVZSX1JUUk7o+rJxdHNkdEdIPUBARkZDRkRET+f55sjOycXKtre6tLS3uLO2srfF9v76/Pz8+/v9/f78/v39/f7+/v38"},{"plano":"camara","w":39,"h":13,"x":15,"y":10,"d":"9/f3+Pj59/f29/f09vL18PDw8fDx7+/t7urp5+fo6Ofl5+fo5/T//KRBLCkoIyIjIiBUfyoxLy0tKistMC8rNDMwLysrLS0yMjAtMLX+/pvCFw8PDwwNDg9JbhsfJh8/JCQhLSUjJSUlKCIjHC0mKBwjILD//JzFFREPEA8ODA9HchxHZkKVQouhXm+Pi1WHIol6fXttnCEkIq7++rLNFg8OEBAOEBBIdRtNb22UipSdmI+chZyaL4SBlpWBkysjKrT/+MnYFRAODxIRDg9Icx0kQjosNTMxPTY2NTQvITs1Mz42OCgoLLL++p3DEiNLTElITk11cxo3b1VxVXpoPW54NlhVaEVrQGQsHB8gJLD+/KPFEyTE9vr8/Pz5axlES5mMaoJ9VnFxYaRsTXQ6kZY1HiMkKrP+/LnOP0BCiu39+/z3cxsxdEB0UzkvbTlESTRTbTxWQmoqHSQoKbP8+8JXVlZVUV9YU1N7dBsbHB0fISYcJSgdIychICslIBsmJCIqJbL++7AiJCEgICciHSJRdCEdISAgJiQkIiUgJCIkICIjIyEjIyEnKLL+99mjoqKgo6WhoqO2yq+vr7Cytrm9vL3Awb/Ew8fJyszNzcrMzOr99/b39/P39/f39vj29fjz9fP59vr8+/j2+ff19PX09vr59/f3+Pr5"},{"plano":"senado","w":48,"h":9,"x":19,"y":13,"d":"/v3+/v7//f7+/f39/v39/P38/Pr9/fz9/v79/Pv7+/z9/Pz8/Pz+/v3+/v7+/v7/++Tp6unp5+fm5uTi4eLh4ePh397e3Nra2ur88tXV09HSy83Ozs7Q0dHX4cfIy87N9cnh4+Hj5Ojm6Onn4+Hc5Ofi46IxMS01M4352To0Nj9IOj43PkFAQy01ahUVFxJM+Of8/f7+/v79/P375Kmop9C8rrWHnlGJmIP52TsxP1x9YG14ZGBnbCE3PBAPFxA79OP3+fn5+Pr59/n37unq7+/r6bWVop6XpI/520M2O1doRVdRZFBLSDE3GyAcHBdA8+fMwLnKuMrJweG8y+XdxuDF1LmcuLGlwpf52kQ6UmVtanh1eFNjUiwxGTKDMFBF8uTW362mv8K/wuPIzezJvsLW1LdFUkpOX4v52UA2RkhgWlxjSltKaC4wXx4mRmQi9dLW1tLQzszJx8G/wr66uby5uqd9hn+Fhrb7542Kj4eRlpOPk5iXmZyYt6SkoJ+o/v7+/f78/v78/Pz8/Pz8+/r8+vv6+vr6+fv9+/z8/P38/Pv7/Pz8/Pv7+fn6/Pv5"},{"plano":"trt","w":25,"h":18,"x":8,"y":3,"d":"/v7+/v7+/v78+vz7/v3+/v7+/v7+/v7+/v7+/v78+/z8vre/zvDt+/z+/v7+/v7+/v7+/v7++6iy+kqmRlaAMbjy/v7+/v7+/v7+/v39+NlhQeV5JyF2DlGCiPH7/v7+/v7+/v78+5gsYh4eaEQhUhGMm4Vl5/39/v7+/v7+++UZFkI74UNCkBeNI0x1Ibv1/f7+/v7+/ulrEHk1hfnq6fLj85R2NQpulPz+/v7+/v61CxFdzlR/6vn39tmDpadcMmz7/v7+/v7+oV1x7WeLNXG7st8tLSGq4kNk/P7+/v7+/pLK+tBP+V1EFAhqIC4iI9/oVtj8/v7+/v6N6PqPYvQyRBUHRScYXI33+dbm/f7+/v7+9vr5P0uTC0IWGGoYDT3c/P39/v7+/v7+/vz76x4FBgQIAwUFBAQMiPX6/v7+/v7+/v7+/rAFBg4JFwICAgYCAwdc9/7+/v7+/v7+/f13Bh5LJzADAgIEBAIEDtL9/f3+/v7+/vz5RwY7tbpXAgMDKQUCAwen/f39/f7+/u3W+98/Wvf4SAYUBF0gBAYfw/25ioSLjITPlfr54bf1+EwQLwecaiNq0Pn34s/SyNfZ"},{"plano":"saudecaixa","w":25,"h":15,"x":18,"y":15,"d":"//78/v///+Do6fHj3ODr5+z+///////////+7/P+//+x0Ka+vLOzu7Lc/f/99u3///////zJyOn5yLOyvrvAu8DD3vjsyNL5/////////O3Gp6u/xdXT2NbLwLe3y+38/v///////////fjk0cC0qa61yNfo6fj+///////////////7j5uPm4OxfsRtx/3/////////////////9lq3R2txwWqxTJr9///////////++v////7Hvs/JzOHPzeHZ/f//////////+uD///////////7//v////////////////78/////////////////////////////////v////////////////7////////////+/fz9/v39/vz9/v7+/v78/f3////+/f39/fTy8vT09fPz9PTy9PTz8/T08/Hy8/Lz9fyQnKqum3ajp5+ZpKKwr62zkZucloOysrL6job34bdpr5eRmJGKqKut9GR0dKCP+v39"},{"plano":"tjdft","w":25,"h":11,"x":5,"y":4,"d":"/vz9+/z85O76/v79/f///Pf18Pv9/f7///v1+vDG71Z99vju/PDf79Wona/O6eD+/vj6sL/Uj+3CsZVaoutaOEvI49DI5KCy/Pq5/OZoW5WVRSUiO9faNUh/wVlfc2atbphUUP37r1BQVy0hKp758ZRpLWpfSTVEl0RNUpz9++t5R08yOzrZ++ZPTj1yNWJFa0g9fUdS/vz8tDZLNkR0xPr68M/b793h2ezW3urd3/7++/BxKi42mfr9/f38//79/cR8npqCk8v+/vz64C8eXuv7/f7////////7mtmMeNFl///++fejKsn6//3+////////+5HXh266cf39/fv22Z7v+f35/P////////vJy8qtq9c="},{"plano":"gdf","w":26,"h":14,"x":7,"y":5,"d":"//vq6urq9/Dy8/Pz8urq6urq6urq6urq/f//nWhoaGjHk6WoqKijaGhoaGhoaGhoaGiy//+QaGhoaMeTpaioqKNoaGhoaGhoaGhoaKX//5BoaGhox5OlqKioo2hobmtpbmppbm5opf//l2hoaGjHk6WoqKiiaKG7xZHRx4/WtWul///asIlvaMeTpaegl4poxYW+qqWGuNqoaKX//8+8vLqvu5ydmZiYkmiZwcaQ0MaJq2hopf//u5qRjYyMtLi4q45taGlqaWh/aHl0aWil//+8pKSino20gW9oaGhoq6mds3q1qLfCa6X//7ykpKSkjrRxaGhoaGiLmJqZno+cjJNopf//vKSkpKSOtHFoaGhoaGhoaGhoaGhoaGil//+8pKSkpI60cWhoaGhoaGhoaGhoaGhoaKX//+bKycnJvNOspqampqampqampqampqan4f///////////////////////////////////w=="}];
+AUT.matchLogo=function(sm){
+  const res=[];const rw=Math.round(sm.w*0.6),rh=Math.round(sm.h*0.2);
+  for(const t of AUT.LOGOS){
+    if(!t.v){const raw=typeof atob!=='undefined'?Uint8Array.from(atob(t.d),c=>c.charCodeAt(0)):Uint8Array.from(Buffer.from(t.d,'base64'));
+      const n=raw.length;let m=0;for(const v of raw)m+=v;m/=n;const v=new Float32Array(n);let ss=0;for(let i=0;i<n;i++){v[i]=raw[i]-m;ss+=v[i]*v[i]}t.v=v;t.nrm=Math.sqrt(ss)||1}
+    let best=-1;
+    for(let y=0;y+t.h<=rh;y++)for(let x=0;x+t.w<=rw;x++){
+      let s1=0,s2=0,sc=0;
+      for(let j=0;j<t.h;j++){const row=(y+j)*sm.w+x,tr=j*t.w;for(let i=0;i<t.w;i++){const p=sm.g[row+i];s1+=p;s2+=p*p;sc+=p*t.v[tr+i]}}
+      const n=t.w*t.h,va=s2-s1*s1/n;if(va<=1)continue;const ncc=sc/(Math.sqrt(va)*t.nrm);if(ncc>best)best=ncc;
+    }
+    res.push({plano:t.plano,score:best});
+  }
+  // um convênio pode ter mais de um modelo (ex.: GDF digitalizado e GDF digital): fica com a melhor nota de cada
+  const best=new Map();for(const r of res)if(!best.has(r.plano)||best.get(r.plano).score<r.score)best.set(r.plano,r);
+  return [...best.values()].sort((a,b)=>b.score-a.score);
+};
+AUT.readCanvas=async function(canvas0,worker,env){
+  const W=canvas0.width,H=canvas0.height;let canvas=canvas0;
+  const crop=(x,y,w,h,s=1,clean=false)=>{x=Math.max(0,Math.min(W-2,Math.round(x)));y=Math.max(0,Math.min(H-2,Math.round(y)));w=Math.max(2,Math.round(Math.min(w,W-x)));h=Math.max(2,Math.round(Math.min(h,H-y)));
+    s=Math.min(s,9000/w,9000/h);
+    const c=env.make(w*s+40,h*s+40);const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.imageSmoothingEnabled=true;g.drawImage(canvas,x,y,w,h,20,20,w*s,h*s);
+    if(clean==='lines'){ // tabela: binariza e apaga linhas tracejadas/bordas que confundem o OCR
+      const im=g.getImageData(0,0,c.width,c.height),p=im.data,cw=c.width,ch=c.height;
+      for(let i=0;i<p.length;i+=4){const v=(p[i]*.3+p[i+1]*.59+p[i+2]*.11)<140?0:255;p[i]=p[i+1]=p[i+2]=v}
+      for(let yy=0;yy<ch;yy++){let n=0;for(let xx=0;xx<cw;xx++)if(p[(yy*cw+xx)*4]===0)n++;if(n>cw*0.35)for(let xx=0;xx<cw;xx++){const k=(yy*cw+xx)*4;p[k]=p[k+1]=p[k+2]=255}}
+      for(let xx=0;xx<cw;xx++){let n=0;for(let yy=0;yy<ch;yy++)if(p[(yy*cw+xx)*4]===0)n++;if(n>ch*0.6)for(let yy=0;yy<ch;yy++){const k=(yy*cw+xx)*4;p[k]=p[k+1]=p[k+2]=255}}
+      g.putImageData(im,0,0);return env.img(c)}
+    if(clean){const im=g.getImageData(0,0,c.width,c.height),p=im.data,cw=c.width,ch=c.height;
+      // limiar de Otsu (adapta-se a impressão clara/escura)
+      const hist=new Float64Array(256);for(let i=0;i<p.length;i+=4)hist[Math.round(p[i]*.3+p[i+1]*.59+p[i+2]*.11)]++;
+      let tot=p.length/4,sum=0;for(let i=0;i<256;i++)sum+=i*hist[i];let sB=0,wB=0,best=0,thr=150;
+      for(let i=0;i<256;i++){wB+=hist[i];if(!wB)continue;const wF=tot-wB;if(!wF)break;sB+=i*hist[i];const mB=sB/wB,mF=(sum-sB)/wF;const v=wB*wF*(mB-mF)*(mB-mF);if(v>best){best=v;thr=i}}
+      thr=Math.min(200,Math.max(90,thr));
+      for(let i=0;i<p.length;i+=4){const v=(p[i]*.3+p[i+1]*.59+p[i+2]*.11)<=thr?0:255;p[i]=p[i+1]=p[i+2]=v}
+      const dk=(xx,yy)=>p[(yy*cw+xx)*4]===0;
+      if(clean==='cellR')AUT._dropWide(p,cw,ch);
+      // apaga linhas de preenchimento (horizontais) e bordas (verticais)
+      for(let yy=0;yy<ch;yy++){let n=0;for(let xx=0;xx<cw;xx++)if(dk(xx,yy))n++;if(n>cw*(clean==='text'?0.5:0.2))for(let xx=0;xx<cw;xx++){const k=(yy*cw+xx)*4;p[k]=p[k+1]=p[k+2]=255}}
+      for(let xx=0;xx<cw;xx++){let n=0;for(let yy=0;yy<ch;yy++)if(dk(xx,yy))n++;if(n>ch*0.7)for(let yy=0;yy<ch;yy++){const k=(yy*cw+xx)*4;p[k]=p[k+1]=p[k+2]=255}}
+      // remove pedaços baixos (pontilhado/tracejado, pontos, hífens): componentes bem mais baixos que o maior
+      AUT._dropSmall(p,cw,ch,0.45);
+      if(clean==='text'){g.putImageData(im,0,0);return env.img(c)}
+      if(false){const lab=new Int32Array(cw*ch);const comps=[];let id=0;const st=[];
+       for(let i=0;i<cw*ch;i++){if(lab[i]||p[i*4]!==0)continue;id++;let y0c=1e9,y1c=-1,px=[];st.push(i);lab[i]=id;
+         while(st.length){const q=st.pop();px.push(q);const qy=(q/cw)|0,qx=q-qy*cw;if(qy<y0c)y0c=qy;if(qy>y1c)y1c=qy;
+           for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,-1],[1,-1],[-1,1]]){const nx=qx+dx,ny=qy+dy;if(nx<0||ny<0||nx>=cw||ny>=ch)continue;const n=ny*cw+nx;if(!lab[n]&&p[n*4]===0){lab[n]=id;st.push(n)}}}
+         comps.push({h:y1c-y0c+1,px})}
+       const maxH=comps.reduce((m,c)=>Math.max(m,c.h),0);
+       for(const c of comps)if(c.h<maxH*0.45)for(const q of c.px){p[q*4]=p[q*4+1]=p[q*4+2]=255}}
+      // recorte justo no algarismo (pixels com vizinhos verticais = traço real, não resíduo de linha)
+      // faixas horizontais com tinta; fica com a mais próxima do centro do recorte (a linha do item)
+      const rowInk=[];for(let yy=1;yy<ch-1;yy++){let n=0;for(let xx=0;xx<cw;xx++)if(dk(xx,yy)&&dk(xx,yy-1)&&dk(xx,yy+1))n++;rowInk.push(n>0)}
+      const bands=[];let bs=-1,gap=0;
+      for(let k=0;k<=rowInk.length;k++){if(k<rowInk.length&&rowInk[k]){if(bs<0)bs=k;gap=0}else if(bs>=0){if(k<rowInk.length&&++gap<=3)continue;bands.push([bs+1,k-gap+1]);bs=-1;gap=0}}
+      const big=bands.filter(b=>b[1]-b[0]>=8*s/3);
+      if(!big.length)return null;
+      const mid=ch/2;big.sort((a,b)=>Math.abs((a[0]+a[1])/2-mid)-Math.abs((b[0]+b[1])/2-mid));
+      const [by0,by1]=big[0];
+      let x0=cw,y0=ch,x1=-1,y1=-1;
+      let xmin=0;
+      if(clean==='cellR'){ // quantidade: fica só com o grupo de algarismos mais à direita (a coluna vizinha pode entrar no recorte)
+        const colInk=[];for(let xx=0;xx<cw;xx++){let n=0;for(let yy=Math.max(1,by0);yy<=Math.min(ch-2,by1);yy++)if(dk(xx,yy))n++;colInk.push(n>0)}
+        const gapMin=Math.max(6,(by1-by0)*1.2);let gap=0,last=-1;
+        for(let xx=cw-1;xx>=0;xx--){if(colInk[xx]){if(last<0)last=xx;gap=0}else if(last>=0){if(++gap>gapMin){xmin=xx+gap;break}}}
+      }
+      for(let yy=Math.max(1,by0);yy<=Math.min(ch-2,by1);yy++)for(let xx=xmin;xx<cw;xx++)if(dk(xx,yy)&&dk(xx,yy-1)&&dk(xx,yy+1)){if(xx<x0)x0=xx;if(xx>x1)x1=xx;if(yy<y0)y0=yy;if(yy>y1)y1=yy}
+      if(x1<0||y1-y0<8)return null;
+      g.putImageData(im,0,0);
+      const pad=25,tw=x1-x0+1+2*pad,th=y1-y0+1+2*pad;const t=env.make(tw,th);const tg=t.getContext('2d');tg.fillStyle='#fff';tg.fillRect(0,0,tw,th);
+      tg.drawImage(c,x0,y0,x1-x0+1,y1-y0+1,pad,pad,x1-x0+1,y1-y0+1);
+      return env.img(t)}
+    return env.img(c)};
+  const portrait=H>W;
+  // triagem rápida: lê só o topo da folha em baixa resolução; páginas que não são guia SP/SADT
+  // (pedido, carteirinha, documentos) são puladas sem o OCR completo
+  if(!env.noPrecheck){
+    const k=Math.min(1,1700/W);
+    await worker.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});
+    const q=await worker.recognize(crop(0,0,W,H*(portrait?0.18:0.24),k));
+    const qt=AUT.norm(q.data.text||'');
+    if(!/guia|sadt|servico profissional|diagnostico e terapia|servico auxiliar|terapia sp|registro ans|numero da carteira|beneficiario/.test(qt))
+      return{skipped:true,isGuide:false,items:[],guiaPrestador:'',guiaOperadora:'',senha:'',dataAut:'',paciente:'',carteira:'',plano:'',text:q.data.text||''};
+  }
+  {const dsk=AUT.deskew(canvas,env);canvas=dsk.canvas;var skewAngle=dsk.angle}
+  // psm 6 (bloco uniforme) lê formulário linha a linha; o modo automático (3) às vezes descarta campos inteiros
+  await worker.setParameters({tessedit_pageseg_mode:env.psm1||'6',tessedit_char_whitelist:''});
+  const KF=1;
+  const top=await worker.recognize(crop(0,0,W,H*(portrait?0.62:0.52),KF,env.pre1==='lines'?'lines':false),{},{text:true,blocks:true});
+  // linhas ficam deslocadas 20px pelo padding
+  const fb=b=>({x0:(b.x0-20)/KF,x1:(b.x1-20)/KF,y0:(b.y0-20)/KF,y1:(b.y1-20)/KF});
+  const lines=AUT.linesOf(top.data).map(l=>({...l,bbox:fb(l.bbox),words:l.words.map(w=>({text:w.text,bbox:fb(w.bbox)}))}));
+  const page=AUT.parsePage(lines);
+  page.text=top.data.text||'';page.skew=skewAngle;
+  // logotipo / cabeçalho da operadora
+  // Registro ANS (campo 1): relê só o valor abaixo do rótulo, com dígitos apenas
+  if(!page.ans||!AUT.ANS[page.ans]){
+    const lw=lines.flatMap(l=>l.words||[]).find(w=>/reg.?stro|egistro|registr/.test(AUT.norm(w.text))&&w.bbox.y0<H*0.15);
+    if(lw){const h=lw.bbox.y1-lw.bbox.y0;
+      await worker.setParameters({tessedit_pageseg_mode:'7',tessedit_char_whitelist:'0123456789-'});
+      const t=((await worker.recognize(crop(lw.bbox.x0-W*0.03,lw.bbox.y1+h*0.1,W*0.11,h*1.8,2))).data.text||'').replace(/[^\d]/g,'');
+      await worker.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:''});
+      if(t.length>=6&&t.length<=7)page.ans=t.slice(0,6)+(t[6]||'');page.ansCell=t;
+    }
+  }
+  page.logoText='';
+  // convênio: 1º pelo logotipo (comparação de imagem), depois Registro ANS, depois texto do cabeçalho
+  if(!env.planoLido||env.planoLogo){
+    const r=AUT.matchLogo(AUT.smallGray(canvas,env));page.logoScores=r.slice(0,3).map(x=>x.plano+':'+x.score.toFixed(2)).join(' ');
+    if(r[0]&&r[0].score>=0.82&&(!r[1]||r[0].score-r[1].score>=0.06)){page.plano=r[0].plano;page.planoPor='logotipo';env.planoLogo=true}
+  }
+  if(!page.plano)page.plano=AUT.ansPlan(page.ans)||AUT.detectPlan(lines.filter(l=>l.bbox.y0<H*0.12).map(l=>l.text).join(' '))||'';
+  if(page.plano)env.planoLido=page.plano;
+  const med=a=>{a=a.filter(v=>v!=null).sort((x,y)=>x-y);return a.length?a[Math.floor(a.length/2)]:null};
+  // Leitura por colunas: acha cada linha da tabela pela tinta na coluna do código (campo 25)
+  // e lê separadamente código, descrição e quantidade. Não depende de o OCR entender a linha inteira.
+  const DESC0=env.DESC||{};
+  page.bandItems=[];
+  const chd=page.colsHeader;
+  let colG=null;
+  if(chd&&(chd.words||[]).length){
+    // o cabeçalho pode vir quebrado em várias "linhas" do OCR na mesma altura: junta as palavras
+    const hh=Math.max(8,chd.bbox.y1-chd.bbox.y0);
+    const ws=lines.filter(l=>Math.abs((l.bbox.y0+l.bbox.y1)/2-(chd.bbox.y0+chd.bbox.y1)/2)<hh*1.6).flatMap(l=>l.words||[]).sort((a,b)=>a.bbox.x0-b.bbox.x0);
+    const iC=ws.findIndex(w=>/c[oó0][dg]i?[gq]?o|c[oó]d/i.test(w.text));const iD=ws.findIndex(w=>/descri|escri[çc]/i.test(w.text));
+    if(iC>=0&&(iD>iC||env.colsCode)){
+      const xC=(ws[iC-1]&&/^2[5S]/.test(ws[iC-1].text)?ws[iC-1].bbox.x0:ws[iC].bbox.x0)-W*0.012;
+      const xD=iD>iC?(ws[iD-1]&&/^2[6G]/.test(ws[iD-1].text)?ws[iD-1].bbox.x0:ws[iD].bbox.x0)-W*0.012:xC+(env.colsCode.xD-env.colsCode.xC)*W;
+      const iQ=ws.findIndex((w,k)=>k>iD&&/qt|sol|27/i.test(w.text));
+      const xDe=iQ>0?ws[iQ].bbox.x0-W*0.01:env.colsCode?xC+(env.colsCode.xDe-env.colsCode.xC)*W:Math.min(W*0.98,xD+(xD-xC)*4);
+      const xDe2=xDe>xD+W*0.08?xDe:Math.min(W*0.98,xD+W*0.45);
+      colG={xC,xD,xDe:xDe2,yT:chd.bbox.y1+2};if(iD>iC)env.colsCode={xC:xC/W,xD:xD/W,xDe:xDe2/W};
+    }
+  }
+  // sem cabeçalho legível nesta página: usa as colunas medidas em outra página da mesma guia
+  if(!colG&&env.colsCode&&page.startLine)colG={xC:env.colsCode.xC*W,xD:env.colsCode.xD*W,xDe:env.colsCode.xDe*W,yT:page.startLine.bbox.y1+2,loose:true};
+  if(colG){
+    {const {xC,xD,xDe,yT}=colG;
+      let yB=H*0.97;{const st=lines.find(l=>l.bbox.y0>yT+5&&/contratado executante|codigo na operadora|nome do contratado|dados do atendimento|dados da execu|tipo de atendimento/.test(AUT.norm(l.text)));if(st)yB=Math.min(yB,st.bbox.y0)}
+      // perfil de tinta na coluna do código
+      const cw=Math.round(xD-xC),chh=Math.round(yB-yT);
+      if(cw>20&&chh>20){
+        const c=env.make(cw,chh);const g=c.getContext('2d');g.drawImage(canvas,xC,yT,cw,chh,0,0,cw,chh);
+        const im=g.getImageData(0,0,cw,chh).data;const dk=(x,y)=>{const k=(y*cw+x)*4;return im[k]*.3+im[k+1]*.59+im[k+2]*.11<140};
+        const ink=new Array(chh).fill(0);
+        for(let y=1;y<chh-1;y++){let n=0,raw=0;for(let x=0;x<cw;x++){if(dk(x,y)){raw++;if(dk(x,y-1)&&dk(x,y+1))n++}}ink[y]=raw>cw*0.45?0:n}
+        const minInk=Math.max(3,cw*0.004);
+        const bands=[];let b0=-1,gap=0;
+        for(let y=0;y<=chh;y++){const on=y<chh&&ink[y]>=minInk;if(on){if(b0<0)b0=y;gap=0}else if(b0>=0){if(y<chh&&++gap<=2)continue;bands.push([b0,y-gap]);b0=-1;gap=0}}
+        const textH=H*0.0065; // altura típica do texto da tabela
+        let rows=bands.filter(b=>b[1]-b[0]>=textH*0.6&&b[1]-b[0]<=textH*3.2);
+        // pára depois de um vão grande (fim da tabela)
+        if(rows.length>1){const gaps=rows.slice(1).map((b,i)=>b[0]-rows[i][0]).sort((a,b)=>a-b);const pitch=gaps[Math.floor(gaps.length/2)];
+          const out=[rows[0]];for(let i=1;i<rows.length;i++){if(rows[i][0]-out[out.length-1][0]>pitch*4.5)break;out.push(rows[i])}rows=out}
+        if(env.log)env.log('cols',!!colG.loose,Math.round(colG.xC),Math.round(colG.xD),Math.round(yT),Math.round(yB),'bands',bands.map(b=>b[1]-b[0]).join(','),'rows',rows.length);
+        const cover=(r0,r1)=>{let n=0;for(let x=0;x<cw;x++){for(let y=r0;y<=r1;y++)if(dk(x,y)){n++;break}}return n/cw};
+        for(const [r0,r1] of rows){
+          if(cover(r0,r1)>0.45)continue; // faixa pontilhada/tracejada atravessando a coluna
+          const y0=yT+r0,y1=yT+r1,h=y1-y0;
+          const ci=crop(xC,y0-h*0.6,xD-xC,h*2.2,3,true);if(!ci)continue;
+          const craw=crop(xC,y0-h*0.35,xD-xC,h*1.7,3,false);
+          if(env.debug){env.debug(crop(xC,y0-h*0.6,xD-xC,h*2.2,1,false),'band_raw_'+y0);env.debug(ci,'band_cl_'+y0)}
+          // 1º sem restrição de caracteres: se vier palavra, é rótulo de outra seção (fim da tabela)
+          await worker.setParameters({tessedit_pageseg_mode:'7',tessedit_char_whitelist:''});
+          // 1º a imagem original (o Tesseract binariza bem impressão clara); se não sair código, a versão limpa
+          let ct=((await worker.recognize(craw)).data.text||'').trim();
+          {const d0=(ct.match(/[0-9OoSlIB][0-9OoSlIB .\-]{6,}[0-9OoSlIB]/g)||[]).sort((a,b)=>b.length-a.length)[0]||'';const n0=AUT.fixDigits(d0).replace(/\D/g,'').length;
+           if(n0<7||n0>10){const ct2=((await worker.recognize(ci)).data.text||'').trim();if(ct2)ct=ct2}}
+          
+
+          const pick=t=>{const m=(t.match(/[0-9OoSlIB][0-9OoSlIB .\-]{6,}[0-9OoSlIB]/g)||[]).sort((a,b)=>b.length-a.length)[0]||'';return AUT.fixDigits(m).replace(/\D/g,'')};
+          let dg=pick(ct);
+          const word=(ct.replace(/[OoSsIlB]/g,'0').match(/[A-Za-zÀ-ÿ]{4,}/g)||[]).find(w=>new Set(w.toLowerCase()).size>=3);
+          if(env.log)env.log('  cell',r0,JSON.stringify(ct),dg);
+          if(word&&!(dg.length>=7&&dg.length<=10)){if(page.bandItems.length)break;else continue}
+          if(dg.length<7||dg.length>10){
+            await worker.setParameters({tessedit_pageseg_mode:'7',tessedit_char_whitelist:'0123456789.-'});
+            ct=((await worker.recognize(ci)).data.text||'').trim();dg=pick(ct);
+          }
+          if(dg.length<7||dg.length>10)continue;
+          if(dg.length>=10&&dg.startsWith('22'))dg=dg.slice(2); // coluna "Tabela 22" grudada no código
+          await worker.setParameters({tessedit_pageseg_mode:'7',tessedit_char_whitelist:''});
+          const dt=((await worker.recognize(crop(xD,y0-h*0.8,xDe-xD,h*2.6,2,'text'))).data.text||'').replace(/\s+/g,' ').trim();
+          const desc=dt.replace(/\s*[-/]\s*EXAMES?(\s+SADT)?.*$/i,'').replace(/[|_—\-.'"\s:]+$/,'').trim();
+          page.bandItems.push({raw:ct,code:dg.length===8?dg:dg.slice(0,9),desc,qs:'',qa:'',line:ct+' '+dt,bbox:{x0:xC,x1:xDe,y0,y1},words:[],cy:(y0+y1)/2,th:h,fromBand:true});
+        }
+      }
+    }
+  }
+  await worker.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});
+  if(page.bandItems.length){
+    // une com o que a leitura de linha achou (mesma altura = mesmo item)
+    const merged=page.bandItems.slice();
+    for(const it of page.items){
+      const cy=(it.bbox.y0+it.bbox.y1)/2;
+      const twin=merged.find(b=>Math.abs(b.cy-cy)<b.th*1.2||(it.code&&b.code===it.code));
+      if(twin){
+        const okB=!!(DESC0[twin.code]),okI=!!(it.code&&DESC0[it.code]);
+        if(!okB&&okI){twin.code=it.code}
+        if((!twin.desc||twin.desc.length<4)&&it.desc)twin.desc=it.desc;
+        else if(it.desc&&twin.code&&DESC0[twin.code]&&AUT.similarity(it.desc,DESC0[twin.code])>AUT.similarity(twin.desc,DESC0[twin.code]))twin.desc=it.desc;
+        if(!twin.qa&&it.qa){twin.qa=it.qa;twin.qs=it.qs}
+        if(it.seq&&!twin.seq)twin.seq=it.seq;
+      }else if(it.code||it.desc)merged.push(it);
+    }
+    merged.sort((a,b)=>(a.cy??a.bbox.y0)-(b.cy??b.bbox.y0));
+    page.items=merged;page.byColumns=true;
+  }
+  // 2ª leitura só da tabela de procedimentos, ampliada: recupera linhas que o OCR da página inteira perdeu
+  // (letra pequena, linhas pontilhadas). Os itens das duas leituras são unidos pelo código.
+  if(!page.byColumns&&(page.isGuide||page.items.length)){
+    const rowH=med(page.items.map(i=>i.bbox.y1-i.bbox.y0))||H*0.013;
+    const first=page.items[0],last=page.items[page.items.length-1];
+    let yTop=page.headerTabela?page.headerTabela.bbox.y0-rowH*0.3:first?first.bbox.y0-rowH*1.5:page.startLine?page.startLine.bbox.y1:null;
+    let yBot=page.endLine&&yTop!=null&&page.endLine.bbox.y0>yTop?page.endLine.bbox.y0:H*0.97; // sem fim achado: lê até o pé da folha
+    {const st=yTop!=null&&lines.find(l=>l.bbox.y0>yTop+rowH&&/contratado executante|codigo na operadora|nome do contratado|codigo cnes|cod cnes|dados do atendimento|tipo de atendimento|dados da execu|hora inicial|indicacao de acidente/.test(AUT.norm(l.text)));if(st&&st.bbox.y0<yBot)yBot=st.bbox.y0}
+    if(yTop!=null&&yBot-yTop>rowH){
+      const xL=first?Math.max(0,Math.min(...page.items.map(i=>i.bbox.x0))-W*0.03):0;
+      const S=Math.min(1.6,3200/(W-xL),Math.sqrt(12e6/((W-xL)*(yBot-yTop))));
+      await worker.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:''});
+      const mp=b=>({x0:xL+(b.x0-20)/S,x1:xL+(b.x1-20)/S,y0:yTop+(b.y0-20)/S,y1:yTop+(b.y1-20)/S});
+      const reg=await worker.recognize(crop(xL,yTop,W-xL,yBot-yTop,S,'lines'),{},{text:true,blocks:true});
+      if(!page.colsHeader){const p0=AUT.parseItems(AUT.linesOf(reg.data).map(l=>({...l,bbox:mp(l.bbox),words:l.words.map(w=>({text:w.text,bbox:mp(w.bbox)}))})));if(p0.colsHeader)page.colsHeader=p0.colsHeader}
+      const lines2=AUT.linesOf(reg.data).map(l=>({...l,bbox:mp(l.bbox),words:l.words.map(w=>({text:w.text,bbox:mp(w.bbox)}))}));
+      const p2=AUT.parseItems(lines2);
+      const have=new Map(page.items.map(i=>[i.code||('d:'+AUT.norm(i.desc)),i]));
+      for(const it of p2.items){
+        if(!it.code){const k='d:'+AUT.norm(it.desc);if(![...have.values()].some(o=>AUT.similarity(o.desc,it.desc)>0.7)){page.items.push(it);have.set(k,it)}continue}
+        // item lido só pela descrição na 1ª leitura e com código na 2ª: troca
+        const byDesc=[...have.entries()].find(([k,o])=>k.startsWith('d:')&&AUT.similarity(o.desc,it.desc)>0.7);
+        if(byDesc){have.delete(byDesc[0]);Object.assign(byDesc[1],{code:it.code,raw:it.raw});have.set(it.code,byDesc[1]);continue}
+        const same=c=>[c,c.length===9?c.slice(1):null,c.length===9?c.slice(0,8):null].filter(Boolean);
+        let old=null;for(const k of same(it.code))if(have.get(k)){old=have.get(k);break}
+        if(!old)for(const [k,v] of have)if(k.length===9&&same(k).includes(it.code)){old=v;if(it.code.length===8){old.code=it.code}break}
+        if(!old){page.items.push(it);have.set(it.code,it)}
+        else{if(!old.qa&&it.qa){old.qa=it.qa;old.qs=it.qs}if(it.desc.length>old.desc.length&&AUT.similarity(it.desc,old.desc)>0.5)old.desc=it.desc}
+      }
+      page.items.sort((x,y)=>x.bbox.y0-y.bbox.y0);
+      const hasAut=l=>(l?.words||[]).some(w=>/aut/i.test(w.text));
+      if(!hasAut(page.headerTabela)&&hasAut(p2.headerTabela))page.headerTabela=p2.headerTabela;
+    }
+  }
+  // posição vertical de cada item: palavra do código, ou a 1ª palavra da descrição
+  for(const it of page.items){
+    if(it.fromBand)continue;
+    const ws=it.words||[];
+    let w=ws.find(x=>{const d=AUT.fixDigits(x.text).replace(/\D/g,'');return d.length>=6&&it.code&&d.startsWith(it.code.slice(0,3))});
+    if(!w&&it.desc){const f=AUT.norm(it.desc).split(' ')[0]||'';w=ws.find(x=>f.length>=3&&AUT.norm(x.text).startsWith(f.slice(0,4)))}
+    const bb=w?w.bbox:it.bbox;it.cy=(bb.y0+bb.y1)/2;it.th=bb.y1-bb.y0;
+  }
+  // código ilegível na leitura da linha: relê só a célula do campo 25 (coluna do código)
+  const DESC=env.DESC||{};
+  const needCode=page.items.filter(it=>!it.code||!(DESC[it.code]||DESC[it.code.slice(1)]||DESC[it.code.slice(0,8)]));
+  const ch=page.colsHeader||page.headerTabela;
+  if(needCode.length&&ch){
+    const ws=ch.words||[];const iC=ws.findIndex(w=>/c[oó]d/i.test(w.text));const iD=ws.findIndex(w=>/descri/i.test(w.text));
+    if(iC>=0){
+      const xC=(ws[iC-1]&&/^2[5S]/.test(ws[iC-1].text)?ws[iC-1].bbox.x0:ws[iC].bbox.x0)-W*0.012;
+      const xD=iD>iC?(ws[iD-1]&&/^2[6G]/.test(ws[iD-1].text)?ws[iD-1].bbox.x0:ws[iD].bbox.x0)-W*0.004:ws[iC].bbox.x0+W*0.16;
+      const ths=page.items.map(i=>i.th).filter(Boolean).sort((a,b)=>a-b);const th0=ths[Math.floor(ths.length/2)]||H*0.012;
+      await worker.setParameters({tessedit_pageseg_mode:'7',tessedit_char_whitelist:'0123456789.-'});
+      for(const it of needCode){
+        const img=crop(xC,it.cy-th0*1.1,xD-xC,th0*2.2,3,true);if(!img)continue;
+        const t=((await worker.recognize(img)).data.text||'').trim();const d=t.replace(/\D/g,'');
+        let c=d.length===8?d:d.length===9?(DESC[d.slice(0,8)]?d.slice(0,8):DESC[d.slice(1)]?d.slice(1):''):'';
+        if(c&&DESC[c]&&(!it.desc||AUT.similarity(it.desc,DESC[c])>=0.3||!it.code)){it.codeCell=t;it.code=c;it.descOnly=false}
+      }
+    }
+  }
+  // quantidade autorizada: recorta a célula do campo 28 em cada linha
+  const hdr=page.headerTabela;
+  if(page.items.length){
+    const ws=hdr?.words||[];const iAut=ws.findIndex(w=>/aut/i.test(w.text));const iSol=ws.findIndex(w=>/sol[iíl1]c/i.test(w.text));
+    // limites do formulário (a guia pode ocupar só parte da folha digitalizada)
+    const y0=page.items[0].bbox.y0,y1=page.items[page.items.length-1].bbox.y1,rowH=med(page.items.map(i=>i.bbox.y1-i.bbox.y0));
+    const formL=Math.min(...page.items.map(i=>i.bbox.x0));
+    const formR=Math.max(...lines.filter(l=>l.bbox.y1>y0-rowH*6&&l.bbox.y0<y1+rowH*6).map(l=>l.bbox.x1),...page.items.map(i=>i.bbox.x1));
+    const fw=formR-formL;
+    let ax0,ax1,sx0,sx1;
+    if(iAut>=0){ax1=ws[iAut].bbox.x1+fw*0.012;ax0=(ws[iAut-1]&&/qtde|28|qt|ot/i.test(ws[iAut-1].text)?ws[iAut-1].bbox.x0:ws[iAut].bbox.x0-fw*0.035)-fw*0.01}
+    else{ax0=formR-fw*0.075;ax1=formR}
+    if(iSol>=0){sx1=ws[iSol].bbox.x1+fw*0.012;sx0=(ws[iSol-1]&&/qtde|27|qt|ot/i.test(ws[iSol-1].text)?ws[iSol-1].bbox.x0:ws[iSol].bbox.x0-fw*0.035)-fw*0.01}
+    else{sx0=formR-fw*0.165;sx1=formR-fw*0.085}
+    if(sx1>ax0)sx1=ax0;
+    // cabeçalho mal lido (palavras grudadas) gera coluna larga demais: descarta e usa a referência
+    let hdrOk=iAut>=0&&(ax1-ax0)<fw*0.1&&ax0>formL+fw*0.7;
+    if(iAut>=0&&!hdrOk){ax0=formR-fw*0.075;ax1=formR;sx0=formR-fw*0.165;sx1=formR-fw*0.085}
+    if(hdrOk)env.colsRel={a0:(ax0-formL)/fw,a1:(ax1-formL)/fw,s0:(sx0-formL)/fw,s1:(sx1-formL)/fw};
+    else if(env.colsRel){ax0=formL+env.colsRel.a0*fw;ax1=formL+env.colsRel.a1*fw;sx0=formL+env.colsRel.s0*fw;sx1=formL+env.colsRel.s1*fw}
+    page.cols={ax0,ax1,sx0,sx1,W,formL,formR,hdr:hdrOk};
+    await worker.setParameters({tessedit_pageseg_mode:'8',tessedit_char_whitelist:'0123456789'});
+    // altura de referência: a palavra do código (a linha do OCR pode juntar ruído de outras linhas)
+    for(const it of page.items){
+      const digits=it.code.slice(0,3);
+      const cw=(it.words||[]).find(w=>AUT.fixDigits(w.text).replace(/\D/g,'').length>=6&&AUT.fixDigits(w.text).replace(/\D/g,'').startsWith(digits))||(it.words||[]).find(w=>AUT.fixDigits(w.text).replace(/\D/g,'').length>=6);
+      const bb=cw?cw.bbox:it.bbox;it.cy=(bb.y0+bb.y1)/2;it.th=Math.min(bb.y1-bb.y0,rowH);
+    }
+    const cys=page.items.map(i=>i.cy).sort((a,b)=>a-b);const gaps=cys.slice(1).map((v,i)=>v-cys[i]).filter(g=>g>2);
+    const th=med(page.items.map(i=>i.th))||rowH;
+    const pitch=Math.min(med(gaps)||th*2.2,th*2.6);
+    // deslocamento vertical entre a coluna do código e a da quantidade (guia torta ou cabeçalho desalinhado),
+    // medido no próprio cabeçalho da tabela: posição de "Autoriz." menos a de "Código/Tabela"
+    let off=0;
+    if(hdrOk){const ref=ws.find(w=>/c[oó]d|tabela|proced/i.test(w.text)&&w.bbox.x1<ws[iAut].bbox.x0);
+      if(ref){off=((ws[iAut].bbox.y0+ws[iAut].bbox.y1)-(ref.bbox.y0+ref.bbox.y1))/2;if(Math.abs(off)>pitch*0.9)off=0;else env.offRatio=off/pitch}}
+    else if(env.offRatio!=null)off=env.offRatio*pitch; // mesma guia: usa o desalinhamento medido em outra página
+    page.cols.off=off;
+    for(const it of page.items){
+      const hh=pitch*1.3,y=it.cy+off-hh/2;
+      const _ca=crop(ax0,y,ax1-ax0,hh,3,'cellR');const qa=_ca?((await worker.recognize(_ca)).data.text||'').replace(/\D/g,''):'';
+      it.qaCell=qa;
+    }
+  }
+  await worker.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});
+  return page;
+};
+// ---------- PDF "digital" (com texto de verdade, ex.: portal GDF): lê o texto direto, sem OCR ----------
+// items: textContent.items do pdf.js; tf(x,y) -> [x,y] em pixels da página (já com rotação)
+AUT.linesFromText=function(items,tf){
+  const ws=[];
+  for(const it of items){const s=(it.str||'').trim();if(!s)continue;
+    const [x,y]=tf(it.transform[4],it.transform[5]);const h=Math.hypot(it.transform[2],it.transform[3])||10;
+    const [x2]=tf(it.transform[4]+(it.width||s.length*h*0.5),it.transform[5]);
+    // tf pode inverter eixos com rotação: usa a fonte transformada
+    ws.push({text:s,x0:Math.min(x,x2),x1:Math.max(x,x2),y,h});}
+  if(!ws.length)return[];
+  const hs=ws.map(w=>w.h).sort((a,b)=>a-b);const tol=hs[Math.floor(hs.length/2)]*0.5;
+  ws.sort((a,b)=>a.y-b.y||a.x0-b.x0);
+  const lines=[];
+  for(const w of ws){let L=lines.find(l=>Math.abs(l.yc-w.y)<=tol);if(!L){L={yc:w.y,words:[]};lines.push(L)}L.words.push(w)}
+  return lines.sort((a,b)=>a.yc-b.yc).map(l=>{l.words.sort((a,b)=>a.x0-b.x0);const hh=Math.max(...l.words.map(w=>w.h));
+    return{text:l.words.map(w=>w.text).join(' '),bbox:{x0:l.words[0].x0,x1:l.words[l.words.length-1].x1,y0:l.yc-hh,y1:l.yc},
+      words:l.words.map(w=>({text:w.text,bbox:{x0:w.x0,x1:w.x1,y0:w.y-w.h,y1:w.y}}))}});
+};
+// devolve a página lida pelo texto, ou null se o texto não for confiável (aí usa OCR)
+AUT.readTextPage=function(lines,env,bigImage){
+  if(!lines.length||bigImage)return null; // página digitalizada (imagem grande): vai para o OCR
+  const DESC=env.DESC||{};
+  const full=lines.map(l=>l.text).join('\n');
+  const codeLines=lines.filter(l=>/(?:^|\s)\d{8}\s+[A-Za-zÀ-ÿ]/.test(l.text));
+  const known=codeLines.filter(l=>DESC[(l.text.match(/(?:^|\s)(\d{8})\s/)||[])[1]]);
+  const isGuide=/servi[çc]o profissional|sp\s*\/?\s*sadt|diagn[óo]stico e terapia/i.test(full);
+  if(!isGuide&&!known.length)return /\w{4,}/.test(full)?{isGuide:false,items:[],skipped:true,fromText:true}:null;
+  if(codeLines.length&&known.length<codeLines.length*0.8)return null; // texto embutido ruim (OCR antigo do PDF)
+  if(!codeLines.length&&!/registro ans|beneficiári|carteira/i.test(full))return null;
+  const page=AUT.parsePage(lines);
+  // valores ao lado/abaixo dos rótulos em PDF digital: rótulo e valor ficam em linhas separadas
+  const below=re=>{const i=lines.findIndex(l=>l.words.some(w=>re.test(w.text)));if(i<0)return null;const lab=lines[i];
+    const w=lab.words.find(w=>re.test(w.text));
+    const nxt=lines.slice(i+1,i+3).flatMap(l=>l.words).filter(x=>x.bbox.x0>=w.bbox.x0-20&&x.bbox.x0<w.bbox.x0+260);
+    return nxt.length?nxt[0].text:null};
+  if(!page.guiaPrestador){const m=full.match(/Guia\s+no\s+Prestador[\s\S]{0,80}?(\d{5,20})/i);if(m)page.guiaPrestador=m[1]}
+  if(!page.paciente){const v=below(/^10\s*-\s*Nome\s*$/);if(v&&/[A-Za-zÀ-ÿ]{3}/.test(v))page.paciente=v.toUpperCase()}
+  if(!page.dataAut){const v=below(/Data da Autoriza/);if(v&&/\d{2}\/\d{2}\/\d{4}/.test(v))page.dataAut=v.match(/\d{2}\/\d{2}\/\d{4}/)[0]}
+  if(!page.senha){const v=below(/5\s*-\s*Senha/);if(v&&/^\d{5,14}$/.test(v))page.senha=v}
+  if(!page.guiaOperadora){const v=below(/Atribu[ií]do pela Operadora/);if(v&&/^\d{4,20}$/.test(v))page.guiaOperadora=v}
+  if(!page.carteira){const v=below(/N[úu]mero da Carteira/);if(v&&/^\d{5,22}$/.test(v))page.carteira=v}
+  for(const it of page.items){it.qaCell=it.qa||'';it.fromText=true}
+  page.isGuide=true;page.fromText=true;page.text=full;
+  return page;
+};
+/* AUT-CORE-END */
+// ===== Aba "Valor da guia autorizada" =====
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const brl=v=>(Math.round(v*100)/100).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const CASEC_REAJUSTE=1.0404*1.02; // colunas E–H da planilha CASEC: +4,04% e depois +2%
+let DATA=null,guides=[],loadingData=null;
+
+// ---------- abas ----------
+function showTab(which){
+  const valor=which==='valor';
+  $('aba-guia').hidden=valor;$('aba-valor').hidden=!valor;
+  $('tab-guia').setAttribute('aria-selected',String(!valor));$('tab-valor').setAttribute('aria-selected',String(valor));
+  try{localStorage.setItem('aba-ativa',which)}catch(e){}
+  if(valor)loadData().catch(()=>{});
+}
+$('tab-guia').addEventListener('click',()=>showTab('guia'));
+$('tab-valor').addEventListener('click',()=>showTab('valor'));
+try{if(localStorage.getItem('aba-ativa')==='valor')showTab('valor')}catch(e){}
+
+// ---------- tabelas ----------
+function loadData(){
+  if(DATA)return Promise.resolve(DATA);
+  if(loadingData)return loadingData;
+  loadingData=new Promise((resolve,reject)=>{
+    if(window.TABELAS_VALORES){DATA=window.TABELAS_VALORES;resolve(DATA);return}
+    const s=document.createElement('script');s.src='tabelas-valores.js?v=1';
+    s.onload=()=>{DATA=window.TABELAS_VALORES;if(!DATA){reject(Error('Arquivo de tabelas vazio'));return}renderFontes();resolve(DATA)};
+    s.onerror=()=>{loadingData=null;reject(Error('Não foi possível carregar tabelas-valores.js. Verifique se o arquivo foi publicado junto com o index.html.'))};
+    document.head.appendChild(s);
+  });
+  return loadingData;
+}
+function renderFontes(){
+  $('aut-fontes').innerHTML=AUT.PLANOS.map(p=>`<div><strong>${esc(p.nome)}</strong> — ${Object.keys(DATA.vals[p.id]||{}).length.toLocaleString('pt-BR')} códigos · planilha ${esc(DATA.fontes[p.id]||'')}</div>`).join('')+
+  `<div style="margin-top:8px">CASEC: valor da coluna “VALOR” (D). Marque “aplicar reajuste” na guia para usar o valor das colunas E–H (+4,04% e +2%).</div>`;
+}
+const planName=id=>(AUT.PLANOS.find(p=>p.id===id)||{}).nome||'';
+
+// ---------- preço ----------
+function priceOptions(g,code){
+  const v=DATA.vals[g.plano]?.[code];if(!v)return null;
+  return g.plano==='casec'&&g.reajusteCasec?v.map(x=>Math.round(x*CASEC_REAJUSTE*100)/100):v;
+}
+function descOf(g,code){return DATA.desc[code]||''}
+function lineInfo(g,it){
+  const flags=[];let level='';
+  const code=String(it.code||'').replace(/\D/g,'');
+  const opts=g.plano?priceOptions(g,code):null;
+  if(code.length!==8&&!(opts&&opts.length)){flags.push('Código incompleto');level='bad'}
+  if(!g.plano){flags.push('Selecione o convênio');level='bad'}
+  else if(!opts){flags.push(DATA.desc[code]?'Código não consta na tabela deste convênio':'Código não encontrado em nenhuma tabela');level='bad'}
+  if(it.fixedFrom){flags.push(/descri/.test(it.fixedFrom)?`Código identificado pelo nome do exame${/^\d/.test(it.fixedFrom)?' (código lido: '+it.fixedFrom.split(' ')[0]+')':''} — confira`:`Código corrigido (lido: ${it.fixedFrom}) — confira`);level=level||'warn'}
+  if(it.descOcr&&DATA.desc[code]&&AUT.similarity(it.descOcr.slice(0,40),DATA.desc[code].slice(0,40))<0.3&&AUT.similarity(it.descOcr,DATA.desc[code])<0.3&&!it.manual){flags.push('Descrição da guia difere da tabela: confira');level=level||'warn'}
+  if(it.origem==='ocr'&&!it.qtyEdited&&it.qtyRead){flags.push(+it.qa===1?`Qtd. lida na guia: ${it.qtyRead} — usado 1, confira`:`Qtd. ${it.qa} — confira`);level=level||'warn'}
+  else if(it.origem==='ocr'&&!it.qtySure&&!it.qtyEdited&&!flags.length)flags.push('qtd. 1 (assumida)');
+  if(opts&&opts.length>1&&it.opt==null){flags.push('Tabela tem mais de um valor: escolha');level=level||'warn'}
+  const qty=Math.max(0,parseInt(it.qa,10)||0);
+  const unit=opts?opts[Math.min(it.opt??0,opts.length-1)]:0;
+  return{code,opts,unit,qty,sub:Math.round(unit*qty*100)/100,flags,level};
+}
+function totals(g){
+  let total=0,pend=0,qtd=0;
+  for(const it of g.items){const L=lineInfo(g,it);total+=L.sub;qtd+=L.qty;if(L.level==='bad')pend++}
+  return{total:Math.round(total*100)/100,pend,qtd};
+}
+
+// ---------- render ----------
+function renderAll(){
+  const box=$('aut-guias');box.replaceChildren();
+  guides.forEach((g,gi)=>box.append(renderGuide(g,gi)));
+  $('aut-resultado').hidden=!guides.length;
+}
+function field(label,value,key,g,gi,wide){
+  const d=document.createElement('div');d.className='field';
+  const id=`g${gi}-${key}`;d.innerHTML=`<label for="${id}">${esc(label)}</label>`;
+  const i=document.createElement('input');i.id=id;i.value=value||'';i.autocomplete='off';
+  i.addEventListener('input',()=>{g[key]=i.value;});d.append(i);return d;
+}
+function renderGuide(g,gi){
+  const wrap=document.createElement('div');wrap.className='guide-block';
+  const head=document.createElement('div');head.className='guide-title';
+  head.innerHTML=`<h3>Guia ${gi+1}${g.guiaPrestador?' · nº '+esc(g.guiaPrestador):''}</h3><span class="pill">${g.pages?.length?`Página(s) ${g.pages.join(', ')} de ${esc(g.arquivo||'arquivo')}`:'Digitação manual'}</span>`;
+  wrap.append(head);
+  // resumo
+  const sum=document.createElement('div');sum.className='aut-summary';
+  const fp=document.createElement('div');fp.className='field';
+  fp.innerHTML=`<label for="g${gi}-plano">Convênio ${g.planoDetectado?'· identificado na guia':'· <span style="color:var(--red)">não identificado</span>'}</label>`;
+  const sel=document.createElement('select');sel.id=`g${gi}-plano`;
+  sel.innerHTML='<option value="">— selecione o convênio —</option>'+AUT.PLANOS.map(p=>`<option value="${p.id}">${esc(p.nome)}</option>`).join('');
+  sel.value=g.plano||'';sel.addEventListener('change',()=>{g.plano=sel.value;g.items.forEach(it=>it.opt=null);renderAll()});fp.append(sel);sum.append(fp);
+  sum.append(field('Paciente',g.paciente,'paciente',g,gi),field('Nº da guia (prestador)',g.guiaPrestador,'guiaPrestador',g,gi),
+    field('Nº da guia (operadora)',g.guiaOperadora,'guiaOperadora',g,gi),field('Senha',g.senha,'senha',g,gi),field('Data da autorização',g.dataAut,'dataAut',g,gi));
+  wrap.append(sum);
+  if(g.plano==='casec'){
+    const l=document.createElement('label');l.className='chk noprint';l.innerHTML=`<input type="checkbox" ${g.reajusteCasec?'checked':''}> Aplicar reajuste da planilha CASEC (colunas E–H: +4,04% e +2%)`;
+    l.querySelector('input').addEventListener('change',e=>{g.reajusteCasec=e.target.checked;renderAll()});wrap.append(l);
+  }
+  // total
+  const T=totals(g);
+  const tot=document.createElement('div');tot.className='aut-total';
+  tot.innerHTML=`<div><div class="lbl">Valor total da guia${g.plano?' · '+esc(planName(g.plano)):''}</div><div class="val" data-total>${brl(T.total)}</div></div>
+    <div class="meta">${g.items.length} código(s) · ${T.qtd} unidade(s) autorizada(s)<br>${esc(g.paciente||'Paciente não identificado')}${T.pend?`<br><strong style="color:#ffd9a8">${T.pend} item(ns) sem valor — confira abaixo</strong>`:''}${g.seqMax>g.items.length?`<br><strong style="color:#ffd9a8">A guia numera ${g.seqMax} itens e foram lidos ${g.items.length} — confira os que faltam e use “+ Adicionar código”</strong>`:''}${g.ignoradas?`<br>${g.ignoradas} linha(s) ilegível(is) ignorada(s)`:''}</div>`;
+  wrap.append(tot);
+  // tabela
+  const area=document.createElement('div');area.className='table-area';
+  const tbl=document.createElement('table');tbl.className='aut-table';
+  tbl.innerHTML='<thead><tr><th>#</th><th>Código</th><th>Descrição (tabela do convênio)</th><th>Qtd. aut.</th><th class="num">Valor unit.</th><th class="num">Subtotal</th><th>Situação</th><th class="noprint"></th></tr></thead>';
+  const tb=document.createElement('tbody');
+  g.items.forEach((it,i)=>{
+    const L=lineInfo(g,it);const tr=document.createElement('tr');tr.className=L.level;
+    tr.innerHTML=`<td>${i+1}</td><td></td><td>${esc(descOf(g,L.code)||'—')}${it.descOcr&&!DATA.desc[L.code]?`<span class="ocr">Na guia: ${esc(it.descOcr)}</span>`:''}</td><td></td><td class="num"></td><td class="num">${brl(L.sub)}</td><td class="state ${L.level?'bad':(L.flags.length?'':'good')}">${esc(L.flags.join(' · ')||'OK')}</td><td class="noprint"></td>`;
+    const ci=document.createElement('input');ci.value=it.code;ci.inputMode='numeric';ci.maxLength=10;ci.style.width='96px';ci.setAttribute('aria-label',`Código ${i+1}`);
+    ci.addEventListener('change',()=>{it.code=ci.value.replace(/\D/g,'');it.fixedFrom='';it.manual=true;it.opt=null;renderAll()});tr.children[1].append(ci);
+    const qi=document.createElement('input');qi.type='number';qi.min='0';qi.step='1';qi.value=it.qa;qi.style.width='64px';qi.setAttribute('aria-label',`Quantidade ${i+1}`);
+    qi.addEventListener('change',()=>{it.qa=qi.value;it.qtyEdited=true;renderAll()});tr.children[3].append(qi);
+    if(L.opts&&L.opts.length>1){const s=document.createElement('select');s.innerHTML=(it.opt==null?'<option value="">escolha</option>':'')+L.opts.map((v,k)=>`<option value="${k}">${brl(v)}</option>`).join('');s.value=it.opt==null?'':String(it.opt);
+      s.addEventListener('change',()=>{it.opt=s.value===''?null:+s.value;renderAll()});tr.children[4].append(s);}
+    else tr.children[4].textContent=L.opts?brl(L.unit):'—';
+    const del=document.createElement('button');del.className='icon-btn';del.type='button';del.textContent='×';del.title='Excluir';del.setAttribute('aria-label',`Excluir código ${i+1}`);
+    del.addEventListener('click',()=>{g.items.splice(i,1);renderAll()});tr.children[7].append(del);
+    tb.append(tr);
+  });
+  if(!g.items.length)tb.innerHTML='<tr><td colspan="8" class="muted" style="padding:18px">Nenhum código. Use “+ Adicionar código”.</td></tr>';
+  tbl.append(tb);
+  const tf=document.createElement('tfoot');tf.innerHTML=`<tr><td colspan="5">Total</td><td class="num">${brl(T.total)}</td><td colspan="2"></td></tr>`;tbl.append(tf);
+  area.append(tbl);wrap.append(area);
+  // ações
+  const act=document.createElement('div');act.className='actionbar';
+  const b1=document.createElement('button');b1.className='btn';b1.type='button';b1.textContent='+ Adicionar código';
+  b1.addEventListener('click',()=>{g.items.push({code:'',qa:1,origem:'manual',manual:true,opt:null});renderAll();const ins=$('aut-guias').children[gi].querySelectorAll('tbody tr');ins[ins.length-1]?.querySelector('input')?.focus()});
+  const b2=document.createElement('button');b2.className='btn btn-primary';b2.type='button';b2.textContent='Copiar resumo';
+  b2.addEventListener('click',()=>copyText(summaryText(g),b2));
+  const b3=document.createElement('button');b3.className='btn';b3.type='button';b3.textContent='Baixar planilha (CSV)';b3.addEventListener('click',()=>downloadCsv(g));
+  const b4=document.createElement('button');b4.className='btn btn-subtle';b4.type='button';b4.textContent='Imprimir';b4.addEventListener('click',()=>window.print());
+  act.append(b1,b2,b3,b4);wrap.append(act);
+  return wrap;
+}
+function summaryText(g){
+  const T=totals(g);
+  const lines=g.items.map(it=>{const L=lineInfo(g,it);return `${L.code}  ${descOf(g,L.code)||it.descOcr||''}  x${L.qty}  ${brl(L.sub)}`});
+  return [`Convênio: ${planName(g.plano)||'—'}`,`Paciente: ${g.paciente||'—'}`,`Guia (prestador): ${g.guiaPrestador||'—'}`,`Guia (operadora): ${g.guiaOperadora||'—'}`,g.senha?`Senha: ${g.senha}`:'',g.dataAut?`Autorização: ${g.dataAut}`:'',`Códigos: ${g.items.length}`,`VALOR TOTAL: ${brl(T.total)}`,T.pend?`(${T.pend} item(ns) sem valor na tabela)`:'','',...lines].filter((l,i)=>l!==''||i>7).join('\n');
+}
+async function copyText(t,btn){
+  try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.append(ta);ta.select();document.execCommand('copy');ta.remove()}
+  const o=btn.textContent;btn.textContent='Copiado ✓';setTimeout(()=>btn.textContent=o,1600);
+}
+function downloadCsv(g){
+  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const num=v=>String(v.toFixed(2)).replace('.',',');
+  const rows=[['Convênio',planName(g.plano)],['Paciente',g.paciente],['Guia prestador',g.guiaPrestador],['Guia operadora',g.guiaOperadora],['Senha',g.senha],['Data autorização',g.dataAut],[],['Código','Descrição','Qtd','Valor unitário','Subtotal']];
+  for(const it of g.items){const L=lineInfo(g,it);rows.push([L.code,descOf(g,L.code)||it.descOcr||'',L.qty,num(L.unit),num(L.sub)])}
+  rows.push([],['','Total','','',num(totals(g).total)]);
+  const blob=new Blob(['﻿'+rows.map(r=>r.map(q).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Valor_guia_${(g.guiaPrestador||'sem_numero')}_${AUT.norm(g.paciente).replace(/\s+/g,'_').slice(0,40)}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+}
+
+// ---------- leitura ----------
+function autStatus(m,k=''){$('aut-status').textContent=m;$('aut-status').className='status'+(k?' '+k:'')}
+function autProgress(p){$('aut-progress').hidden=false;$('aut-progress-bar').style.width=p+'%'}
+function lock(yes){busy=yes;for(const id of ['aut-ler','aut-manual','aut-limpar','analisar','gerar','limpar'])if($(id))$(id).disabled=yes}
+// um env por arquivo: guarda as colunas/desalinhamento medidos numa página para as demais da mesma guia
+const newEnv=()=>({make:(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return c},img:c=>c,DESC:DATA?DATA.desc:{}});
+let env=newEnv();
+async function pagesOf(file){
+  const out=[];
+  if(file.type==='application/pdf'||/\.pdf$/i.test(file.name)){
+    needLib('PDF.js','pdfjsLib');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+    if(pdf.numPages>80){await pdf.destroy();throw Error(`${file.name}: mais de 80 páginas.`)}
+    out.total=pdf.numPages;
+    out.render=async n=>{const page=await pdf.getPage(n);const base=page.getViewport({scale:1});const scale=Math.min(3.6,3000/Math.max(base.width,base.height));
+      const vp=page.getViewport({scale});const c=env.make(Math.ceil(vp.width),Math.ceil(vp.height));
+      const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);
+      await page.render({canvasContext:g,viewport:vp}).promise;page.cleanup();return c};
+    // PDF gerado pelo portal (texto de verdade, sem digitalização): lê direto o texto, sem OCR
+    out.textPage=async(n,env)=>{
+      const page=await pdf.getPage(n);const base=page.getViewport({scale:1});const vp=page.getViewport({scale:3000/Math.max(base.width,base.height)});
+      const ops=await page.getOperatorList();const O=pdfjsLib.OPS;let big=false;
+      ops.fnArray.forEach((fn,i)=>{if(fn===O.paintImageXObject||fn===O.paintInlineImageXObject||fn===O.paintJpegXObject){const a=ops.argsArray[i];if((a[1]||0)*(a[2]||0)>1e6)big=true}});
+      if(big)return null;
+      const tc=await page.getTextContent();const lines=AUT.linesFromText(tc.items,(x,y)=>vp.convertToViewportPoint(x,y));
+      const r=AUT.readTextPage(lines,env,big);if(!r||!r.isGuide)return r;
+      // convênio pelo logotipo (página pequena basta)
+      const sv=page.getViewport({scale:400/base.width});const c=env.make(Math.ceil(sv.width),Math.ceil(sv.height));const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);
+      await page.render({canvasContext:g,viewport:sv}).promise;
+      const m=AUT.matchLogo(AUT.smallGray(c,env));if(m[0]&&m[0].score>=0.82&&(!m[1]||m[0].score-m[1].score>=0.06)){r.plano=m[0].plano;r.planoPor='logotipo'}
+      return r;
+    };
+    out.close=()=>pdf.destroy();
+  }else if(/^image\//.test(file.type)||/\.(jpe?g|png|webp)$/i.test(file.name)){
+    out.total=1;
+    out.render=async()=>{const bm=await createImageBitmap(file);const k=Math.min(1.5,3000/Math.max(bm.width,bm.height));const c=env.make(Math.round(bm.width*k),Math.round(bm.height*k));
+      const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(bm,0,0,c.width,c.height);bm.close();return c};
+    out.close=()=>{};
+  }else throw Error('Formato não suportado: '+file.name);
+  return out;
+}
+// ---------- leitores de OCR em paralelo ----------
+// Vários "trabalhadores" leem páginas ao mesmo tempo (o computador tem vários núcleos).
+let pool=null;
+async function getPool(){
+  if(pool)return pool;
+  needLib('Tesseract.js','Tesseract');
+  const n=Math.max(1,Math.min(3,(navigator.hardwareConcurrency||2)-1));
+  autStatus(`Preparando leitura (${n} em paralelo). Na primeira vez baixa o modelo de português — pode levar alguns segundos.`);
+  const ws=[];for(let i=0;i<n;i++)ws.push(Tesseract.createWorker('por',1,{}));
+  pool=await Promise.all(ws);return pool;
+}
+// Mantém a leitura andando com a aba em segundo plano: um "Web Lock" impede o navegador de congelar a página.
+function withLock(fn){return navigator.locks&&navigator.locks.request?navigator.locks.request('asmepro-leitura-guia',fn):fn()}
+const baseTitle=document.title;
+$('aut-ler').addEventListener('click',async()=>{
+  if(busy)return;const files=[...$('aut-arquivo').files];
+  if(!files.length){autStatus('Anexe a guia autorizada (PDF ou imagem).','error');return}
+  lock(true);autProgress(2);
+  const t0=Date.now();
+  try{await withLock(async()=>{
+    await loadData();
+    const workers=await getPool();
+    const found=[];let done=0,total=0;const docs=[];
+    for(const f of files){const d=await pagesOf(f);d.name=f.name;docs.push(d);total+=d.total}
+    const tick=name=>{autProgress(4+Math.round(done/total*92));autStatus(`Lendo ${name}: ${done} de ${total} página(s)…\nPode usar outras abas enquanto isso; só não feche esta.`);document.title=`(${done}/${total}) Lendo guia…`};
+    for(const d of docs){
+      const pages=new Array(d.total);env=newEnv();let next=1;tick(d.name);
+      try{
+        await Promise.all(workers.map(async w=>{
+          while(next<=d.total){const n=next++;
+            if(d.textPage){let tp=null;try{tp=await d.textPage(n,env)}catch(e){console.warn('texto',n,e)}
+              if(tp){pages[n-1]=tp;done++;tick(d.name);continue}}
+            const canvas=await d.render(n);
+            try{pages[n-1]=await AUT.readCanvas(canvas,w,env)}
+            catch(e){console.error('página',n,e);pages[n-1]={isGuide:false,items:[],erro:String(e)}}
+            canvas.width=canvas.height=0;done++;tick(d.name);
+          }
+        }));
+      }finally{await d.close()}
+      for(const g of AUT.buildGuides(pages,DATA))found.push({...g,arquivo:d.name,planoDetectado:!!g.plano,reajusteCasec:false,
+        items:g.items.map(it=>({...it,origem:'ocr',opt:null}))});
+    }
+    guides=found.filter(g=>g.items.length||g.paciente||g.guiaPrestador);
+    renderAll();
+    const secs=Math.round((Date.now()-t0)/1000);
+    const msgs=guides.map((g,i)=>{const T=totals(g);return `Guia ${i+1}: ${planName(g.plano)||'convênio NÃO identificado — selecione'} · ${g.paciente||'paciente não lido'} · nº ${g.guiaPrestador||g.guiaOperadora||'—'} · ${g.items.length} código(s) · ${brl(T.total)}${T.pend?` · ${T.pend} pendência(s)`:''}${g.ignoradas?` · ${g.ignoradas} linha(s) ilegível(is) — confira na guia`:''}${g.seqMax>g.items.length?` · ATENÇÃO: a guia numera ${g.seqMax} itens`:''}`});
+    const warn=!guides.length||guides.some(g=>!g.plano||totals(g).pend||g.ignoradas||g.seqMax>g.items.length||g.items.some(it=>lineInfo(g,it).level));
+    autStatus(guides.length?msgs.join('\n')+`\n(${total} página(s) lidas em ${secs}s)`+(warn?'\n\nConfira os itens destacados antes de usar o valor.':''):'Nenhuma guia SP/SADT reconhecida no arquivo. Use “Calcular sem anexo” para digitar os códigos.',warn?'warning':'success');
+    autProgress(100);document.title=(guides.length?'✓ ':'')+'Guia lida — '+baseTitle;
+    if(guides.length)$('aut-resultado').scrollIntoView({behavior:'smooth',block:'start'});
+  })}catch(e){console.error(e);autStatus('Não foi possível ler a guia: '+e.message,'error');document.title=baseTitle}
+  finally{lock(false);setTimeout(()=>{$('aut-progress').hidden=true},1500)}
+});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!busy&&/^✓/.test(document.title))setTimeout(()=>{document.title=baseTitle},4000)});
+$('aut-manual').addEventListener('click',async()=>{
+  try{await loadData()}catch(e){autStatus(e.message,'error');return}
+  guides.push({pages:[],plano:'',planoDetectado:false,paciente:'',guiaPrestador:'',guiaOperadora:'',senha:'',dataAut:'',reajusteCasec:false,items:[{code:'',qa:1,origem:'manual',manual:true,opt:null}]});
+  renderAll();autStatus('Selecione o convênio e digite os códigos (8 dígitos) e quantidades.','success');
+  $('aut-guias').lastElementChild?.scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('aut-limpar').addEventListener('click',()=>{guides=[];$('aut-arquivo').value='';renderAll();autStatus('Anexe a guia autorizada para iniciar.')});
+window.AUT_UI={get guides(){return guides},totals,lineInfo,loadData};
+})();
+</script>
+</body>
+</html>
