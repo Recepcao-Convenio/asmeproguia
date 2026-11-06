@@ -27,7 +27,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
-  <script defer src="tabelas-valores.js?v=3"></script>
+  <script defer src="tabelas-valores.js?v=4"></script>
 </head>
 <body>
   <header><div class="container"><div class="eyebrow">Ferramenta para preenchimento de guias</div><h1>Guia SP/SADT, sem digitação repetitiva.</h1><p>Anexe o pedido médico, a carteirinha e a guia em branco. O sistema identifica os exames, associa os códigos TUSS, solicita conferência dos itens sem correspondência e gera o PDF no próprio navegador.</p><div class="privacy">◈ Processamento dos documentos no navegador • Sem envio para servidor</div></div></header>
@@ -492,10 +492,11 @@ AUT.PLANOS=[
   {id:'gdf',nome:'GDF Saúde · INAS',re:/\bgdf\b|\binas\b/},
   {id:'pfsaude',nome:'PF Saúde',re:/\bpf ?saude\b|policia federal/},
   {id:'casec',nome:'CASEC (Codevasf)',re:/casec|codevasf|41 ?229/},
-  {id:'saudecaixa',nome:'Saúde Caixa',re:/saude ?caixa|caixa economica|^caixa$|\bcaixa\b/}
+  {id:'saudecaixa',nome:'Saúde Caixa',re:/saude ?caixa|caixa economica|^caixa$|\bcaixa\b/},
+  {id:'proasa',nome:'PROASA (Adventista)',re:/proasa|adventista/}
 ];
 // Registro ANS impresso no campo 1 (só os que identificam o convênio sem ambiguidade)
-AUT.ANS={'312924':'saudecaixa','412295':'casec'};
+AUT.ANS={'312924':'saudecaixa','412295':'casec','310522':'proasa'};
 AUT.ansPlan=a=>{a=String(a||'');return AUT.ANS[a]||AUT.ANS[a.slice(0,6)+a.slice(-1)]||AUT.ANS[a.slice(1)]||AUT.ANS[a.slice(1,7)]||''};
 AUT.detectPlan=function(text){
   const n=norm(text);
@@ -1144,6 +1145,13 @@ AUT.readTextPage=function(lines,env,bigImage){
   if(!page.senha){const v=below(/5\s*-\s*Senha/);if(v&&/^\d{5,14}$/.test(v))page.senha=v}
   if(!page.guiaOperadora){const v=below(/Atribu[ií]do pela Operadora/);if(v&&/^\d{4,20}$/.test(v))page.guiaOperadora=v}
   if(!page.carteira){const v=below(/N[úu]mero da Carteira/);if(v&&/^\d{5,22}$/.test(v))page.carteira=v}
+  // convênio pelo Registro ANS (campo 1), quando ele identifica o convênio sem ambiguidade
+  if(!page.plano){
+    let a=page.ans&&AUT.ANS[page.ans]?page.ans:'';
+    if(!a){const v=below(/Registro\s*ANS/i);if(v&&/^\d{6,7}$/.test(v))a=v}
+    if(!a){const m=full.match(/Registro\s*ANS[\s\S]{0,160}?\b(\d{6})\b/i);if(m)a=m[1]}
+    if(a&&AUT.ansPlan(a)){page.ans=a;page.plano=AUT.ansPlan(a)}
+  }
   for(const it of page.items){it.qaCell=it.qa||'';it.fromText=true}
   page.isGuide=true;page.fromText=true;page.text=full;
   return page;
@@ -1175,8 +1183,8 @@ function loadData(){
   if(DATA)return Promise.resolve(DATA);
   if(loadingData)return loadingData;
   loadingData=new Promise((resolve,reject)=>{
-    if(window.TABELAS_VALORES){DATA=window.TABELAS_VALORES;resolve(DATA);return}
-    const s=document.createElement('script');s.src='tabelas-valores.js?v=3';
+    if(window.TABELAS_VALORES){DATA=window.TABELAS_VALORES;renderFontes();resolve(DATA);return}
+    const s=document.createElement('script');s.src='tabelas-valores.js?v=4';
     s.onload=()=>{DATA=window.TABELAS_VALORES;if(!DATA){reject(Error('Arquivo de tabelas vazio'));return}renderFontes();resolve(DATA)};
     s.onerror=()=>{loadingData=null;reject(Error('Não foi possível carregar tabelas-valores.js. Verifique se o arquivo foi publicado junto com o index.html.'))};
     document.head.appendChild(s);
@@ -1185,6 +1193,7 @@ function loadData(){
 }
 function renderFontes(){
   $('aut-fontes').innerHTML=AUT.PLANOS.map(p=>`<div><strong>${esc(p.nome)}</strong> — ${Object.keys(DATA.vals[p.id]||{}).length.toLocaleString('pt-BR')} códigos · planilha ${esc(DATA.fontes[p.id]||'')}</div>`).join('')+
+  `<div style="margin-top:8px">PROASA: laboratório pela CBHPM 5ª edição (porte 1A = R$ 10,00 e UCO = R$ 11,50).</div>`+
   `<div style="margin-top:8px">CASEC: valor da coluna “VALOR” (D). Marque “aplicar reajuste” na guia para usar o valor das colunas E–H (+4,04% e +2%).</div>`;
 }
 const planName=id=>(AUT.PLANOS.find(p=>p.id===id)||{}).nome||'';
